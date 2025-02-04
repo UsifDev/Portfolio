@@ -3,7 +3,10 @@
     <div class="contact-text">
       <h2>Contact Me</h2>
       <h4>Let's Work Together</h4>
-      <p>I will Help you in your next Project, Contact me through details given below.</p>
+      <p>
+        I will Help you in your next Project, Contact me through details given
+        below.
+      </p>
       <div class="contact-list">
         <li>
           <a href="#">{{ portfolioData.contact.address }}</a>
@@ -19,10 +22,14 @@
         </a>
       </div>
       <div class="contact-icons">
-        <template v-for="social in portfolioData.contact.socialLinks" :key="social.icon">
-          <a :href="social.link" target="_blank"><i :class="social.icon"></i></a>
+        <template
+          v-for="social in portfolioData.contact.socialLinks"
+          :key="social.icon"
+        >
+          <a :href="social.link" target="_blank"
+            ><i :class="social.icon"></i
+          ></a>
         </template>
-        <a :title="portfolioData.contact.phone"><i class="bx bxl-whatsapp"></i></a>
       </div>
       <div class="languages">
         <h3>Languages</h3>
@@ -38,14 +45,14 @@
 </template>
 
 <script>
-import { portfolioData } from '@/assets/data.js'
+import { portfolioData } from "@/assets/data.js";
 
 export default {
   data() {
-    return { portfolioData }
+    return { portfolioData };
   },
-  name: 'ContactComp',
-}
+  name: "ContactComp",
+};
 </script>
 
 <style scoped>

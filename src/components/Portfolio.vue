@@ -5,9 +5,13 @@
       <h4>Some Of My Works</h4>
     </div>
     <div class="portfolio-content">
-      <div class="row" v-for="project in portfolioData.projects" :key="project.title">
+      <div
+        class="row"
+        v-for="project in portfolioData.projects"
+        :key="project.title"
+      >
         <a :href="project.link" target="_blank">
-          <img :src="project.image" />
+          <img :src="project.image.path" :alt="project.image.alt" />
         </a>
         <div class="main-row">
           <div class="row-text">
@@ -21,14 +25,14 @@
 </template>
 
 <script>
-import { portfolioData } from '@/assets/data.js'
+import { portfolioData } from "@/assets/data.js";
 
 export default {
   data() {
-    return { portfolioData }
+    return { portfolioData };
   },
-  name: 'PortfolioComp',
-}
+  name: "PortfolioComp",
+};
 </script>
 
 <style scoped>

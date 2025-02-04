@@ -1,17 +1,28 @@
 <template>
   <section class="about" id="about">
     <div class="about-img">
-      <img :src="portfolioData.about.imagePath" alt="profile image" />
+      <img
+        :src="portfolioData.about.image.path"
+        :alt="portfolioData.about.image.alt"
+      />
     </div>
     <div class="about-text">
       <h2>{{ portfolioData.about.title }}</h2>
       <h4>{{ portfolioData.about.subtitle }}</h4>
-      <div class="about-text" v-for="(desc, i) in portfolioData.about.description" :key="i">
+      <div
+        class="about-text"
+        v-for="(desc, i) in portfolioData.about.description"
+        :key="i"
+      >
         <p>{{ desc }}</p>
         <br v-if="i == portfolioData.about.description.length" />
       </div>
       <div class="about-gri">
-        <div class="about-in" v-for="(skill, i) in portfolioData.about.skills" :key="i">
+        <div
+          class="about-in"
+          v-for="(skill, i) in portfolioData.about.skills"
+          :key="i"
+        >
           <h5>{{ skill }}</h5>
         </div>
       </div>
@@ -21,16 +32,16 @@
 </template>
 
 <script>
-import { portfolioData } from '@/assets/data.js'
+import { portfolioData } from "@/assets/data.js";
 
 export default {
   data() {
     return {
       portfolioData,
-    }
+    };
   },
-  name: 'AboutComp',
-}
+  name: "AboutComp",
+};
 </script>
 
 <style scoped>

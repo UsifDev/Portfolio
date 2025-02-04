@@ -5,8 +5,12 @@
       <h4>Some of My Major Achievements</h4>
     </div>
     <div class="portfolio-content">
-      <div class="row" v-for="achievement in portfolioData.achievements" :key="achievement.title">
-        <img :src="achievement.image" />
+      <div
+        class="row"
+        v-for="achievement in portfolioData.achievements"
+        :key="achievement.title"
+      >
+        <img :src="achievement.image.path" :alt="achievement.image.alt" />
         <div class="main-row">
           <div class="row-text">
             <h6>{{ achievement.description }}</h6>
@@ -19,16 +23,16 @@
 </template>
 
 <script>
-import { portfolioData } from '@/assets/data.js'
+import { portfolioData } from "@/assets/data.js";
 
 export default {
   data() {
     return {
       portfolioData,
-    }
+    };
   },
-  name: 'AchievementsComp',
-}
+  name: "AchievementsComp",
+};
 </script>
 
 <style scoped>

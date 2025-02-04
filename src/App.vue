@@ -14,18 +14,18 @@
 </template>
 
 <script>
-import HeaderComp from './components/Header.vue'
-import HomeComp from './components/Home.vue'
-import AboutComp from './components/About.vue'
-import TechnicalSkillsComp from './components/TechnicalSkills.vue'
-import ExperienceComp from './components/Experience.vue'
-import SkillsComp from './components/Skills.vue'
-import AchievementsComp from './components/Achievements.vue'
-import PortfolioComp from './components/Portfolio.vue'
-import ContactComp from './components/Contact.vue'
+import HeaderComp from "./components/Header.vue";
+import HomeComp from "./components/Home.vue";
+import AboutComp from "./components/About.vue";
+import TechnicalSkillsComp from "./components/TechnicalSkills.vue";
+import ExperienceComp from "./components/Experience.vue";
+import SkillsComp from "./components/Skills.vue";
+import AchievementsComp from "./components/Achievements.vue";
+import PortfolioComp from "./components/Portfolio.vue";
+import ContactComp from "./components/Contact.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     HeaderComp,
     HomeComp,
@@ -37,16 +37,15 @@ export default {
     PortfolioComp,
     ContactComp,
   },
-}
+};
 </script>
 
 <style>
-/* Global Styles */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   list-style: none;
   text-decoration: none;
   scroll-behavior: smooth;

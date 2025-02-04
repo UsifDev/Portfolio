@@ -1,28 +1,30 @@
 <template>
   <section class="home" id="home">
     <video autoplay loop muted plays-inline class="back-video">
-      <source src="@/assets/video4.mp4" type="video/mp4" />
+      <source src="@/assets/portfolioBackground.mp4" type="video/mp4" />
     </video>
     <div class="home-text">
       <h4>{{ portfolioData.home.greeting }}</h4>
       <h1 v-html="portfolioData.home.name"></h1>
       <h3>{{ portfolioData.home.role }}</h3>
-      <a :href="portfolioData.home.resumeLink" class="btn" target="_blank">Download Resume</a>
+      <a :href="portfolioData.home.resumeLink" class="btn" target="_blank"
+        >Download Resume</a
+      >
     </div>
   </section>
 </template>
 
 <script>
-import { portfolioData } from '@/assets/data.js'
+import { portfolioData } from "@/assets/data.js";
 
 export default {
   data() {
     return {
       portfolioData,
-    }
+    };
   },
-  name: 'HomeComp',
-}
+  name: "HomeComp",
+};
 </script>
 
 <style scoped>

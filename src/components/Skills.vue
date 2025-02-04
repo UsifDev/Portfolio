@@ -4,8 +4,12 @@
       <h2>{{ portfolioData.skills.title }}</h2>
     </div>
     <div class="skills-content">
-      <div class="box" v-for="skill in portfolioData.skills.informative" :key="skill.name">
-        <img :src="skill.icon" />
+      <div
+        class="box"
+        v-for="skill in portfolioData.skills.informative"
+        :key="skill.name"
+      >
+        <img :src="skill.icon.path" :alt="skill.name" />
         <h3>{{ skill.name }}</h3>
         <p>{{ skill.description }}</p>
       </div>
@@ -14,16 +18,16 @@
 </template>
 
 <script>
-import { portfolioData } from '@/assets/data.js'
+import { portfolioData } from "@/assets/data.js";
 
 export default {
   data() {
     return {
       portfolioData,
-    }
+    };
   },
-  name: 'SkillsComp',
-}
+  name: "SkillsComp",
+};
 </script>
 
 <style scoped>

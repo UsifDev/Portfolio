@@ -1,13 +1,17 @@
 <template>
   <div class="inner">
     <div class="Tech_header">
-      <h1>Languages</h1>
+      <h1>Tech Skills</h1>
     </div>
     <div class="Tcontainer">
-      <div class="skill-box" v-for="skill in portfolioData.skills.stack" :key="skill.name">
+      <div
+        class="skill-box"
+        v-for="skill in portfolioData.skills.stack"
+        :key="skill.name"
+      >
         <div class="skill-title">
           <div class="tech_img">
-            <img class="skill-icon" :src="skill.icon" :alt="skill.name" />
+            <img class="skill-icon" :src="skill.icon.path" :alt="skill.name" />
           </div>
           <h3>{{ skill.name }}</h3>
         </div>
@@ -17,16 +21,16 @@
 </template>
 
 <script>
-import { portfolioData } from '@/assets/data.js'
+import { portfolioData } from "@/assets/data.js";
 
 export default {
   data() {
     return {
       portfolioData,
-    }
+    };
   },
-  name: 'TechnicalSkillsComp',
-}
+  name: "TechnicalSkillsComp",
+};
 </script>
 
 <style scoped>
@@ -42,7 +46,7 @@ export default {
 }
 
 .Tech_header::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -89,7 +93,7 @@ export default {
 }
 
 .skill-title:after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   right: 50%;
@@ -101,7 +105,7 @@ export default {
 }
 
 .skill-title:before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -125,7 +129,7 @@ export default {
 }
 
 .tech_img:after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;

@@ -1,6 +1,6 @@
 <template>
   <header :class="{ sticky: isSticky }">
-    <h2 class="logo" v-html="portfolioData.header.logo"></h2>
+    <h2 class="logo">Yousif<span>Aljbouri</span></h2>
     <ul class="navbar" :class="{ active: isMenuActive }">
       <li v-for="(link, index) in portfolioData.header.navLinks" :key="index">
         <a :href="link.href">{{ link.text }}</a>
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { portfolioData } from '@/assets/data.js'
+import { portfolioData } from "@/assets/data.js";
 
 export default {
   data() {
@@ -19,20 +19,20 @@ export default {
       isSticky: false,
       isMenuActive: false,
       portfolioData,
-    }
+    };
   },
   methods: {
     toggleMenu() {
-      this.isMenuActive = !this.isMenuActive
+      this.isMenuActive = !this.isMenuActive;
     },
   },
   mounted() {
-    window.addEventListener('scroll', () => {
-      this.isSticky = window.scrollY > 0
-    })
+    window.addEventListener("scroll", () => {
+      this.isSticky = window.scrollY > 0;
+    });
   },
-  name: 'HeaderComp',
-}
+  name: "HeaderComp",
+};
 </script>
 
 <style scoped>

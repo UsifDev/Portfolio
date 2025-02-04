@@ -5,8 +5,12 @@
     </div>
     <br />
     <div class="experience-content">
-      <div class="box" v-for="(exp, index) in portfolioData.experience" :key="index">
-        <img :src="exp.imagePath" :alt="exp.company" />
+      <div
+        class="box"
+        v-for="(exp, index) in portfolioData.experience"
+        :key="index"
+      >
+        <img :src="exp.image.path" :alt="exp.company" />
         <h3>{{ exp.company }}</h3>
         <h4>
           <span>{{ exp.role }}</span>
@@ -23,16 +27,16 @@
 </template>
 
 <script>
-import { portfolioData } from '@/assets/data.js'
+import { portfolioData } from "@/assets/data.js";
 
 export default {
   data() {
     return {
       portfolioData,
-    }
+    };
   },
-  name: 'ExperienceComp',
-}
+  name: "ExperienceComp",
+};
 </script>
 
 <style scoped>
