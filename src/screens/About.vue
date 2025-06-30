@@ -1,43 +1,38 @@
 <template>
   <section class="about" id="about">
     <div class="about-img">
-      <img
-        :src="portfolioData.about.image.path"
-        :alt="portfolioData.about.image.alt"
-      />
+      <img :src="aboutData.image.path" :alt="aboutData.image.alt" />
     </div>
     <div class="about-text">
-      <h2>{{ portfolioData.about.title }}</h2>
-      <h4>{{ portfolioData.about.subtitle }}</h4>
+      <h2>About me</h2>
+      <br />
+      <div class="accent-about-text"></div>
+      <br />
+      <br />
       <div
         class="about-text"
-        v-for="(desc, i) in portfolioData.about.description"
+        v-for="(desc, i) in aboutData.description"
         :key="i"
       >
-        <p>{{ desc }}</p>
-        <br v-if="i == portfolioData.about.description.length" />
+        <p v-html="desc"></p>
+        <br v-if="i == aboutData.description.length" />
       </div>
       <div class="about-gri">
-        <div
-          class="about-in"
-          v-for="(skill, i) in portfolioData.about.skills"
-          :key="i"
-        >
+        <div class="about-in" v-for="(skill, i) in aboutData.skills" :key="i">
           <h5>{{ skill }}</h5>
         </div>
       </div>
-      <a href="#contact" class="btn">Contact Me</a>
     </div>
   </section>
 </template>
 
 <script>
-import { portfolioData } from "@/assets/data.js";
+import { aboutData } from "@/assets/data.js";
 
 export default {
   data() {
     return {
-      portfolioData,
+      aboutData,
     };
   },
   name: "AboutComp",
@@ -46,16 +41,27 @@ export default {
 
 <style scoped>
 .about {
+  background: var(--bg-color);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
+  justify-content: center;
   gap: 2rem;
 }
 
 .about-img img {
+  background-color: white;
+  border-radius: 100px;
+  padding: 25px;
   height: auto;
-  width: 100%;
-  max-width: 460px;
+  width: 80%;
+  max-width: 360px;
+}
+
+.accent-about-text {
+  background-color: var(--main-color);
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .about-text h2 {
@@ -78,7 +84,8 @@ export default {
 
 .about-gri {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, auto));
+  grid-template-columns: repeat(auto-fit, minmax(280px, auto));
+  grid-template-rows: repeat(auto-fit, minmax(70px, auto));
   align-items: center;
   gap: 1rem;
   margin-bottom: 3rem;

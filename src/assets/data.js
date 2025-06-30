@@ -1,225 +1,253 @@
+export class ProjectsData {
+  static #instance = null;
+  projects = [];
+  skills = [];
+
+  constructor(projects) {
+    if (ProjectsData.#instance) {
+      return ProjectsData.#instance;
+    }
+
+    this.projects = projects;
+    this.processSkills();
+    ProjectsData.#instance = this;
+  }
+
+  static getInstance(projects = []) {
+    if (!this.#instance && !projects.length) {
+      throw new Error("Cannot create first instance without projects data");
+    }
+    return this.#instance || new ProjectsData(projects);
+  }
+
+  processSkills() {
+    const skillMap = new Map();
+
+    this.projects.forEach((project) => {
+      project.skills.forEach((skill) => {
+        if (!skillMap.has(skill.name)) {
+          skillMap.set(skill.name, {
+            ...skill,
+            count: 0,
+            projects: [],
+            isHighlighted: false,
+          });
+        }
+        const skillData = skillMap.get(skill.name);
+        skillData.count++;
+        skillData.projects.push({
+          id: project.id,
+          date: project.date,
+          title: project.title,
+          highlighted: project.highlighted,
+        });
+      });
+    });
+
+    this.skills = Array.from(skillMap.values());
+    this._highlightTopSkills();
+  }
+
+  _highlightTopSkills() {
+    // Sort by count then by most recent project date
+    this.skills.sort((a, b) => {
+      if (b.count !== a.count) return b.count - a.count;
+      return new Date(b.projects[0].date) - new Date(a.projects[0].date);
+    });
+
+    // Highlight top 4
+    this.skills.forEach((skill, i) => {
+      skill.isHighlighted = i < 4;
+    });
+  }
+
+  getSkillByName(name) {
+    return this.skills.find((s) => s.name === name);
+  }
+
+  getProjectById(id) {
+    return this.projects.find((p) => p.id === id);
+  }
+
+  getProjects() {
+    return this.projects;
+  }
+
+  getSkills() {
+    return this.skills;
+  }
+}
+
+export const projectsData = [
+  {
+    id: 1,
+    title: "Space Forces",
+    description:
+      "A 2D strategy game where you deploy ships to destroy and reach the opponent's base. The game has multiple ship types, upgrades and power-ups.",
+    image: "/images/ecommerce.jpg",
+    date: "2024-09-01",
+    lessons: [
+      "Organized features into smaller manageable tasks",
+      "Separated game logic into reusable functions or sub-routines",
+      "Leveraged structs to contain and mutate closely-tied data",
+    ],
+    skills: [
+      { name: "C++", level: "advanced" },
+      { name: "Procedural programming", level: "intermediate" },
+      { name: "Sprites handling", level: "intermediate" },
+      { name: "Project Management", level: "beginner" },
+    ],
+  },
+  {
+    id: 2,
+    title: "Shape Match",
+    description: "A casual match-3 game using Unity.",
+    image: "/images/ecommerce.jpg",
+    date: "2025-06-01",
+    lessons: [
+      "Learned about C# task-based asynchronous programming",
+      "Implemented touch handling with Unity Input System",
+      "Object Oriented game programming",
+    ],
+    skills: [
+      { name: "C#", level: "advanced" },
+      { name: "Asynchronous Programming", level: "intermediate" },
+      { name: "Unity", level: "intermediate" },
+      { name: "Coroutines", level: "beginner" },
+      { name: "Collections", level: "intermediate" },
+    ],
+  },
+  {
+    id: 3,
+    title: "Capstone Project: Get In The Habit (GITH)",
+    description:
+      "An android habit tracker application with a focus on energy / motivation tracking.",
+    image: "/images/ecommerce.jpg",
+    date: "2024-06-01",
+    lessons: [
+      "Designed the app with MVVM and Clean architectures",
+      "Used coroutines",
+      "Implemented Composables with Jetpack Compose in Kotlin",
+    ],
+    skills: [
+      { name: "Kotlin", level: "advanced" },
+      { name: "Software Architecture", level: "intermediate" },
+      { name: "Composables", level: "intermediate" },
+      { name: "Navigation Component", level: "beginner" },
+      { name: "Project Management", level: "intermediate" },
+      { name: "Technical Writing", level: "beginner" },
+      { name: "Coroutines", level: "beginner" },
+      { name: "Collections", level: "intermediate" },
+      { name: "Database Design", level: "intermediate" },
+    ],
+  },
+  {
+    id: 4,
+    title: "Foodie App",
+    description:
+      "A restaurant search React-Native web application with Yelp API integration.",
+    image: "/images/ecommerce.jpg",
+    date: "2023-05-15",
+    lessons: [
+      "Learned about React-Native hooks and components",
+      "Integrated external API calls",
+      "Implemented various sorting and ordering options",
+    ],
+    skills: [
+      { name: "Data Organizing", level: "intermediate" },
+      { name: "JavaScript", level: "intermediate" },
+      { name: "API Integration", level: "intermediate" },
+      { name: "Asynchronous Programming", level: "beginner" },
+    ],
+  },
+  {
+    id: 5,
+    title: "This portfolio 😄",
+    description: "Built using Vue.",
+    image: "/images/ecommerce.jpg",
+    date: "2023-05-15",
+    lessons: [
+      "Learned about static webpage hosting with GitHub",
+      "Implemented Vue SFCs",
+      "",
+    ],
+    skills: [
+      { name: "", level: "intermediate" },
+      { name: "JavaScript", level: "intermediate" },
+      { name: "Vue", level: "beginner" },
+      { name: "Composables", level: "intermediate" },
+    ],
+  },
+];
+
 class img {
   constructor(imgpath, imgalt) {
     this.path = imgpath;
     this.alt = imgalt;
   }
 }
-const tempImage = new img("src/assets/image.png", "temp");
-export const portfolioData = {
-  header: {
-    navLinks: [
-      { text: "Home", href: "#home" },
-      { text: "About Me", href: "#about" },
-      { text: "Experience", href: "#experience" },
-      { text: "Skills", href: "#skills" },
-      { text: "Achievements", href: "#achievement" },
-      { text: "Projects", href: "#portfolio" },
-      { text: "Contact", href: "#contact" },
-    ],
-  },
-  home: {
-    greeting: "Hello",
-    name: "I'm Geek <br> <span>101</span>",
-    role: "Software Developer and Programming Enthusiast",
-    resumeLink: "https://www.geeksforgeeks.org/",
-  },
-  about: {
-    image: tempImage,
-    title: "About Me",
-    subtitle: "Hi, My name is Geek101 !!",
-    description: [
-      "I am a Software Engineering graduate of Istanbul Aydin University. I have a keen interest in Problem Solving and finding new and Dynamic Ideas.",
-      "I am a Machine Learning Enthusiast & Game Developer. I can provide clean code and solve complex problems.",
-    ],
-    skills: [
-      "1. Problem Solving",
-      "2. DSA",
-      "3. Machine Learning",
-      "4. Web Development",
-    ],
-  },
-  experience: [
-    {
-      image: tempImage,
-      company: "GameLab Istanbul",
-      role: "Game Developer Intern",
-      duration: "July 2024 – Sept 2024",
-      responsibilities: [
-        "Built a memory-efficient 2D game in C++ using structs, vectors, and smart pointers, cutting production time down to just 6 weeks.",
-        "Engineered the entire game into a single `.cpp`/`.h` pair with strict modularization rules, improving workflow efficiency.",
-        "Developed a custom asset loader using smart pointers and vectors, optimizing RAM usage and enhancing overall performance enabling seamless UI updates during loading screens.",
-      ],
-    },
-    {
-      image: tempImage,
-      company: "GameLab Istanbul",
-      role: "C++ Game Programming Training",
-      duration: "July 2023 – Jan 2024",
-      responsibilities: [
-        "Developed two 2D and 3D games (top-down shooter, car racer) using GlistEngine with features like AI pathfinding, collision detection, and database integration for save systems.",
-        "Integrated sound systems and external databases using SQLite, enabling persistent game data storage.",
-      ],
-    },
+
+class badge {
+  constructor(img, link, title) {
+    this.image = img;
+    if (!this.image.alt) this.image.alt = title + " Badge Icon";
+    this.link = link;
+    this.title = title;
+  }
+}
+
+export const headerData = {
+  navLinks: [
+    { text: "Home", href: "#home" },
+    { text: "About", href: "#about" },
+    { text: "Projects", href: "#portfolio" },
+    { text: "Skills", href: "#skills" },
   ],
-  skills: {
-    title: "My Skills",
-    informative: [
-      {
-        name: "Game Development",
-        icon: tempImage,
-        description:
-          "Front-end development is the art of bringing digital creativity to life, focusing on the user interface and user experience to seamlessly merge design with functionality, shaping the visual and interactive elements of websites.",
-      },
-      {
-        name: "Bot programming",
-        icon: tempImage,
-        description:
-          "Competitive programming is a sport of coding, where individuals engage in solving algorithmic challenges against the clock, showcasing their problem-solving skills and efficiency in crafting elegant and optimized solutions.",
-      },
-      {
-        name: "Machine Learning",
-        icon: tempImage,
-        description:
-          "Machine learning is a transformative field at the intersection of computer science and A.I., empowering systems to learn from data, recognize patterns, and make intelligent decisions, entering in a automated insights and problem-solving.",
-      },
-    ],
-    stack: [
-      {
-        name: "C++",
-        icon: tempImage,
-      },
-      {
-        name: "Python",
-        icon: tempImage,
-      },
-      {
-        name: "JavaScript",
-        icon: tempImage,
-      },
-      {
-        name: "Kotlin",
-        icon: tempImage,
-      },
-      {
-        name: "Godot(GDScript)",
-        icon: tempImage,
-      },
-      {
-        name: "GLSL",
-        icon: tempImage,
-      },
-      {
-        name: "React-Native",
-        icon: tempImage,
-      },
-      {
-        name: "Pandas",
-        icon: tempImage,
-      },
-      {
-        name: "Keras",
-        icon: tempImage,
-      },
-      {
-        name: "Androidx",
-        icon: tempImage,
-      },
-      {
-        name: "Unity",
-        icon: tempImage,
-      },
-      {
-        name: "Git",
-        icon: tempImage,
-      },
-      {
-        name: "JupyterLab",
-        icon: tempImage,
-      },
-      {
-        name: "Figma",
-        icon: tempImage,
-      },
-      {
-        name: "Blender3D",
-        icon: tempImage,
-      },
-    ],
-  },
-  achievements: [
-    {
-      image: tempImage,
-      description: "Graduated! 😁🎓",
-      title: "BSc in Software Engineering!",
-    },
-    {
-      image: tempImage,
-      description: "A full game in 6 weeks!",
-      title: "Pushed hard on my code organization skills",
-    },
-    {
-      image: tempImage,
-      description: "Machine Learning Certification",
-      title: "Developed five ML projects in about a week",
-    },
-  ],
-  projects: [
-    {
-      link: "https://www.geeksforgeeks.org/library-management-system/",
-      image: tempImage,
-      type: "Web App Development",
-      title: "Restaurant Finder with Yelp API",
-    },
-    {
-      link: "https://www.geeksforgeeks.org/forecast-weather-project-check-today-weather-for-any-location/",
-      image: tempImage,
-      type: "Web App Development",
-      title: "Weather Forecasting App",
-    },
-    {
-      link: "https://www.geeksforgeeks.org/dog-breed-classification-using-transfer-learning/",
-      image: tempImage,
-      type: "Machine Learning",
-      title: "Lung Cancer Prediction with K-means",
-    },
-    {
-      link: "https://www.geeksforgeeks.org/ml-boston-housing-kaggle-challenge-with-linear-regression/",
-      image: tempImage,
-      type: "Machine Learning",
-      title: "Book Recommendation Engine with KNN",
-    },
-    {
-      link: "https://www.geeksforgeeks.org/ml-boston-housing-kaggle-challenge-with-linear-regression/",
-      image: tempImage,
-      type: "Machine Learning",
-      title: "Spam Classifier",
-    },
-    {
-      link: "https://www.geeksforgeeks.org/ml-boston-housing-kaggle-challenge-with-linear-regression/",
-      image: tempImage,
-      type: "Game Development",
-      title: "Unity 6 Board Game Prototype",
-    },
-    {
-      link: "https://www.geeksforgeeks.org/ml-boston-housing-kaggle-challenge-with-linear-regression/",
-      image: tempImage,
-      type: "Game Development",
-      title: "Bot programming",
-    },
-  ],
-  contact: {
-    address: "Local Address",
-    email: "example.gmail.com",
-    phone: "+90 0000000000",
-    socialLinks: [
-      { icon: "bx bxl-linkedin", link: "https://www.linkedin.com/" },
-      { icon: "bx bxl-instagram", link: "https://www.instagram.com/" },
-      { icon: "bx bxl-github", link: "https://github.com/" },
-      { icon: "bx bxl-whatsapp", link: "https://wa.me/910000000000" },
-    ],
-    languages: [
-      { language: "English", proficiency: "Professional Proficiency" },
-      { language: "Arabic", proficiency: "Native" },
-    ],
-  },
 };
+
+export const homeData = {
+  greeting: "Hello, My name is",
+  role: "Game Developer and Software Engineer",
+  resumeLink: "src/assets/Bite-sized CV.pdf",
+};
+
+export const aboutData = {
+  image: new img("src/assets/dev icon.png", "Developer Icon"),
+  description: [
+    "I am a Software Engineering graduate of Istanbul Aydin University, on my way in specializing in <strong>video game developement</strong>.",
+    "I like learning new things, solving problems and coming up with creative solutions. I am <strong>open</strong> to applying my skills in <strong>other software fields</strong> too.",
+  ],
+  skills: ["Code Organization", "OOP", "Optimization", "Clean code"],
+};
+
+export const contactData = {
+  address: "Tahtakale, Avcilar, Istanbul, Turkey",
+  email: "yousifmaljbouri@gmail.com",
+  phone: "+90 538 854 01 95",
+  socialLinks: [
+    {
+      icon: "bx bxl-linkedin",
+      link: "https://www.linkedin.com/in/yousefaljbouri/",
+    },
+    { icon: "bx bxl-github", link: "https://github.com/UsifDev" },
+    { icon: "bx bxl-whatsapp", link: "https://wa.me/905388540195" },
+  ],
+};
+
+export const badgesData = [
+  new badge(
+    new img("src/assets/companies/microsoft.png"),
+    "https://www.freecodecamp.org/certification/UsifDev/foundational-c-sharp-with-microsoft",
+    "C# Foundations"
+  ),
+  new badge(
+    new img("src/assets/ml-projects.jpg"),
+    "https://www.freecodecamp.org/certification/usifdev/machine-learning-with-python-v7",
+    "ML with Python"
+  ),
+  new badge(
+    new img("src/assets/web-dev-icon.png"),
+    "https://www.freecodecamp.org/certification/UsifDev/responsive-web-design",
+    "Responsive Design"
+  ),
+];

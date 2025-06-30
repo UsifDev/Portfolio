@@ -4,26 +4,30 @@
       <source src="@/assets/portfolioBackground.mp4" type="video/mp4" />
     </video>
     <div class="home-text">
-      <h4>{{ portfolioData.home.greeting }}</h4>
-      <h1 v-html="portfolioData.home.name"></h1>
-      <h3>{{ portfolioData.home.role }}</h3>
-      <a :href="portfolioData.home.resumeLink" class="btn" target="_blank"
-        >Download Resume</a
-      >
+      <h4>{{ homeData.greeting }}</h4>
+      <div class="home-name">
+        <DevNameComp />
+      </div>
+      <h3>{{ homeData.role }}</h3>
+      <a :href="homeData.resumeLink" class="btn" target="_blank">Resume</a>
     </div>
   </section>
 </template>
 
 <script>
-import { portfolioData } from "@/assets/data.js";
+import DevNameComp from "@/components/DevName.vue";
+import { homeData } from "@/assets/data.js";
 
 export default {
   data() {
     return {
-      portfolioData,
+      homeData,
     };
   },
   name: "HomeComp",
+  components: {
+    DevNameComp,
+  },
 };
 </script>
 
@@ -37,11 +41,19 @@ export default {
   justify-content: flex-start;
 }
 
+span {
+  color: var(--main-color);
+}
+
 .back-video {
-  position: absolute;
+  position: fixed;
   right: 0;
   bottom: 0;
   z-index: -1;
+}
+
+.home-name {
+  flex-direction: row;
 }
 
 .home-text {

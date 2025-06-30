@@ -1,24 +1,26 @@
 <template>
   <header :class="{ sticky: isSticky }">
-    <h2 class="logo">Yousif<span>Aljbouri</span></h2>
-    <ul class="navbar" :class="{ active: isMenuActive }">
-      <li v-for="(link, index) in portfolioData.header.navLinks" :key="index">
+    <DevNameComp class="logo" />
+    <ul class="navbar" v-if="isMenuActive">
+      <li v-for="(link, index) in headerData.navLinks" :key="index">
         <a :href="link.href">{{ link.text }}</a>
       </li>
     </ul>
-    <i id="menu-icon" @click="toggleMenu">&#9776;</i>
+    <p id="menu-icon" @click="toggleMenu">&#9776;</p>
+    <a href="#contact" class="btn" id="contact-me-btn">Contact me</a>
   </header>
 </template>
 
 <script>
-import { portfolioData } from "@/assets/data.js";
+import DevNameComp from "@/components/DevName.vue";
+import { headerData } from "@/assets/data.js";
 
 export default {
   data() {
     return {
       isSticky: false,
       isMenuActive: false,
-      portfolioData,
+      headerData,
     };
   },
   methods: {
@@ -32,6 +34,9 @@ export default {
     });
   },
   name: "HeaderComp",
+  components: {
+    DevNameComp,
+  },
 };
 </script>
 
@@ -63,10 +68,6 @@ header.sticky {
   color: var(--text-color);
 }
 
-.logo span {
-  color: var(--main-color);
-}
-
 .navbar {
   display: flex;
 }
@@ -91,6 +92,5 @@ header.sticky {
   color: var(--text-color);
   z-index: 10001;
   cursor: pointer;
-  display: none;
 }
 </style>

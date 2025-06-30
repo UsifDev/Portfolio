@@ -3,26 +3,26 @@
     <HeaderComp />
     <HomeComp />
     <AboutComp />
-    <TechnicalSkillsComp />
-    <ExperienceComp />
-    <SkillsComp />
-    <AchievementsComp />
-    <PortfolioComp />
     <ContactComp />
+
+    <div class="portfolio-app">
+      <MyProjectsComp />
+      <OtherWorksComp />
+      <SkillsShowcaseComp />
+    </div>
+
     <a href="#" class="top"><i class="bx bx-up-arrow-alt"></i></a>
   </div>
 </template>
 
 <script>
-import HeaderComp from "./components/Header.vue";
-import HomeComp from "./components/Home.vue";
-import AboutComp from "./components/About.vue";
-import TechnicalSkillsComp from "./components/TechnicalSkills.vue";
-import ExperienceComp from "./components/Experience.vue";
-import SkillsComp from "./components/Skills.vue";
-import AchievementsComp from "./components/Achievements.vue";
-import PortfolioComp from "./components/Portfolio.vue";
-import ContactComp from "./components/Contact.vue";
+import MyProjectsComp from "./screens/MyProjects.vue";
+import OtherWorksComp from "./screens/OtherWorks.vue";
+import SkillsShowcaseComp from "./screens/SkillsShowcase.vue";
+import HeaderComp from "./screens/Header.vue";
+import HomeComp from "./screens/Home.vue";
+import AboutComp from "./screens/About.vue";
+import ContactComp from "./screens/Contact.vue";
 
 export default {
   name: "App",
@@ -30,12 +30,10 @@ export default {
     HeaderComp,
     HomeComp,
     AboutComp,
-    TechnicalSkillsComp,
-    ExperienceComp,
-    SkillsComp,
-    AchievementsComp,
-    PortfolioComp,
     ContactComp,
+    MyProjectsComp,
+    OtherWorksComp,
+    SkillsShowcaseComp,
   },
 };
 </script>
@@ -52,7 +50,7 @@ export default {
 }
 
 :root {
-  --bg-color: #020312;
+  --bg-color: #020e12;
   --text-color: #fff;
   --main-color: #eb4a4a;
   --second-color: gray;
@@ -60,6 +58,14 @@ export default {
   --h1-font: 5.2rem;
   --h2-font: 3.5rem;
   --p-font: 1.1rem;
+  --gap: 20px;
+  --badge-size: 120px;
+}
+
+.portfolio-app {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 body {
