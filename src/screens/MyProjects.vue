@@ -6,13 +6,13 @@
         v-for="project in recentProjects"
         :key="project.id"
         :project="project"
-        @skill-click="openSkillModal"
+        @details-click="openProjectModal(project)"
       />
     </div>
-    <SkillModalComp
-      v-if="selectedSkill"
-      :skillName="selectedSkill"
-      @close="selectedSkill = null"
+    <ProjectDetailsModalComp
+      v-if="showModal"
+      :initial-project="initialObject"
+      @close="showModal = false"
     />
   </section>
 </template>
@@ -22,21 +22,23 @@ import { ref } from "vue";
 import { useProjectsData } from "@/composables/useProjectsData";
 const { recentProjects } = useProjectsData();
 
-const selectedSkill = ref(null);
+const showModal = ref(false);
+const initialObject = ref(null);
 
-const openSkillModal = (skillName) => {
-  selectedSkill.value = skillName;
+const openProjectModal = (project) => {
+  initialObject.value = project;
+  showModal.value = true;
 };
 </script>
 
 <script>
 import ProjectCardComp from "@/components/ProjectCard.vue";
-import SkillModalComp from "./SkillModal.vue";
+import ProjectDetailsModalComp from "./ProjectDetailsModal.vue";
 export default {
   name: "MyProjectsComp",
   components: {
     ProjectCardComp,
-    SkillModalComp,
+    ProjectDetailsModalComp,
   },
 };
 </script>

@@ -60,12 +60,21 @@ export default {
   --p-font: 1.1rem;
   --gap: 20px;
   --badge-size: 120px;
-}
 
-.portfolio-app {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  --color-highlight1: #eb4a4a;
+  --color-highlight2: #d93838;
+
+  --accent-color: #eb4a4a; /* Your primary accent color */
+  --color-background: #ffffff;
+  --color-background-soft: #f8f8f8;
+  --color-background-mute: #f2f2f2;
+
+  --color-border: #eaeaea;
+  --color-border-hover: #d4d4d4;
+
+  --color-heading: #1a1a1a;
+  --color-text: #2c3e50;
+  --color-text-mute: #7f7f7f;
 }
 
 body {

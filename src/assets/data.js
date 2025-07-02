@@ -1,91 +1,12 @@
-export class ProjectsData {
-  static #instance = null;
-  projects = [];
-  skills = [];
-
-  constructor(projects) {
-    if (ProjectsData.#instance) {
-      return ProjectsData.#instance;
-    }
-
-    this.projects = projects;
-    this.processSkills();
-    ProjectsData.#instance = this;
-  }
-
-  static getInstance(projects = []) {
-    if (!this.#instance && !projects.length) {
-      throw new Error("Cannot create first instance without projects data");
-    }
-    return this.#instance || new ProjectsData(projects);
-  }
-
-  processSkills() {
-    const skillMap = new Map();
-
-    this.projects.forEach((project) => {
-      project.skills.forEach((skill) => {
-        if (!skillMap.has(skill.name)) {
-          skillMap.set(skill.name, {
-            ...skill,
-            count: 0,
-            projects: [],
-            isHighlighted: false,
-          });
-        }
-        const skillData = skillMap.get(skill.name);
-        skillData.count++;
-        skillData.projects.push({
-          id: project.id,
-          date: project.date,
-          title: project.title,
-          highlighted: project.highlighted,
-        });
-      });
-    });
-
-    this.skills = Array.from(skillMap.values());
-    this._highlightTopSkills();
-  }
-
-  _highlightTopSkills() {
-    // Sort by count then by most recent project date
-    this.skills.sort((a, b) => {
-      if (b.count !== a.count) return b.count - a.count;
-      return new Date(b.projects[0].date) - new Date(a.projects[0].date);
-    });
-
-    // Highlight top 4
-    this.skills.forEach((skill, i) => {
-      skill.isHighlighted = i < 4;
-    });
-  }
-
-  getSkillByName(name) {
-    return this.skills.find((s) => s.name === name);
-  }
-
-  getProjectById(id) {
-    return this.projects.find((p) => p.id === id);
-  }
-
-  getProjects() {
-    return this.projects;
-  }
-
-  getSkills() {
-    return this.skills;
-  }
-}
-
 export const projectsData = [
   {
     id: 1,
     title: "Space Forces",
     description:
       "A 2D strategy game where you deploy ships to destroy and reach the opponent's base. The game has multiple ship types, upgrades and power-ups.",
-    image: "/images/ecommerce.jpg",
+    image: "src/assets/image.png",
     date: "2024-09-01",
+    highlighted: true,
     lessons: [
       "Organized features into smaller manageable tasks",
       "Separated game logic into reusable functions or sub-routines",
@@ -102,8 +23,9 @@ export const projectsData = [
     id: 2,
     title: "Shape Match",
     description: "A casual match-3 game using Unity.",
-    image: "/images/ecommerce.jpg",
+    image: "src/assets/image.png",
     date: "2025-06-01",
+    highlighted: true,
     lessons: [
       "Learned about C# task-based asynchronous programming",
       "Implemented touch handling with Unity Input System",
@@ -122,8 +44,9 @@ export const projectsData = [
     title: "Capstone Project: Get In The Habit (GITH)",
     description:
       "An android habit tracker application with a focus on energy / motivation tracking.",
-    image: "/images/ecommerce.jpg",
+    image: "src/assets/image.png",
     date: "2024-06-01",
+    highlighted: true,
     lessons: [
       "Designed the app with MVVM and Clean architectures",
       "Used coroutines",
@@ -146,8 +69,8 @@ export const projectsData = [
     title: "Foodie App",
     description:
       "A restaurant search React-Native web application with Yelp API integration.",
-    image: "/images/ecommerce.jpg",
-    date: "2023-05-15",
+    image: "src/assets/image.png",
+    date: "2023-11-01",
     lessons: [
       "Learned about React-Native hooks and components",
       "Integrated external API calls",
@@ -164,16 +87,17 @@ export const projectsData = [
     id: 5,
     title: "This portfolio 😄",
     description: "Built using Vue.",
-    image: "/images/ecommerce.jpg",
-    date: "2023-05-15",
+    image: "src/assets/image.png",
+    date: "2025-07-01",
+    highlighted: true,
     lessons: [
       "Learned about static webpage hosting with GitHub",
       "Implemented Vue SFCs",
       "",
     ],
     skills: [
-      { name: "", level: "intermediate" },
-      { name: "JavaScript", level: "intermediate" },
+      { name: "h", level: "intermediate" },
+      { name: "JavaScript", level: "advanced" },
       { name: "Vue", level: "beginner" },
       { name: "Composables", level: "intermediate" },
     ],

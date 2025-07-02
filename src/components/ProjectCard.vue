@@ -29,6 +29,7 @@
           </li>
         </ul>
       </div>
+      <button class="btn" @click="openProjectModal">View Details</button>
     </div>
 
     <div class="skills-section">
@@ -38,7 +39,7 @@
         :name="skill.name"
         :highlighted="getSkill(skill.name)?.isHighlighted"
         clickable
-        @click="openSkillModal(skill.name)"
+        @open-project="openProjectModal"
       />
     </div>
   </div>
@@ -49,7 +50,7 @@ import { ref, computed } from "vue";
 import { useProjectsData } from "@/composables/useProjectsData";
 const { getSkill } = useProjectsData();
 
-const emit = defineEmits(["skill-click"]);
+const emit = defineEmits(["details-click"]);
 
 const props = defineProps({
   project: {
@@ -58,8 +59,8 @@ const props = defineProps({
   },
 });
 
-const openSkillModal = (skillName) => {
-  emit("skill-click", skillName);
+const openProjectModal = () => {
+  emit("details-click", props.project);
 };
 
 const showFullImage = ref(false);
@@ -70,6 +71,7 @@ const displayedSkills = computed(() => props.project.skills.slice(0, 5));
 
 <script>
 import SkillBadgeComp from "./SkillBadge.vue";
+
 export default {
   name: "ProjectCardComp",
   components: {
@@ -79,29 +81,38 @@ export default {
 </script>
 
 <style scoped>
+.btn {
+  padding: 10px 14px;
+}
 .project-card {
   display: flex;
   max-width: 1200px;
   width: 100%;
-  margin: 1rem auto;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  background-color: var(--color-background-soft);
+  margin: 2rem auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background: white;
+  color: var(--color-text);
   position: relative;
 }
 
 .image-container {
-  flex: 0 0 250px;
+  flex: 0 0 280px;
   position: relative;
   overflow: hidden;
+  background: var(--accent-color);
+  padding: 8px;
 }
 
 .project-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
 }
 
 .project-image.full-image {
@@ -120,17 +131,26 @@ export default {
 
 .content-section {
   flex: 1;
-  padding: 1.5rem;
-  min-height: 300px;
+  padding: 2rem;
+  position: relative;
+}
+
+.content-section::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 2rem;
+  bottom: 2rem;
+  width: 1px;
+  background: var(--color-border);
 }
 
 .skills-section {
-  flex: 0 0 180px;
-  padding: 1.5rem;
+  flex: 0 0 200px;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  border-left: 1px solid var(--color-border);
 }
 
 .project-title {

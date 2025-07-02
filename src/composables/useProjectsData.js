@@ -1,11 +1,12 @@
 import { ref, computed } from "vue";
-import { ProjectsData, projectsData } from "@/assets/data.js";
+import { projectsData } from "@/assets/data.js";
+import { ProjectsDataStore } from "@/assets/ProjectsData.js";
 
-const portfolio = ref(ProjectsData.getInstance(projectsData));
+const portfolio = ref(ProjectsDataStore.getInstance(projectsData));
 
 export function useProjectsData() {
   if (!portfolio.value) {
-    portfolio.value = ProjectsData.getInstance(projectsData);
+    portfolio.value = ProjectsDataStore.getInstance(projectsData);
   }
 
   return {
@@ -15,17 +16,13 @@ export function useProjectsData() {
     highlightedSkills: computed(() =>
       portfolio.value.getSkills().filter((s) => s.isHighlighted)
     ),
-    recentProjects: computed(() =>
-      portfolio.value
-        .getProjects()
-        .toSorted((a, b) => new Date(b.date) - new Date(a.date))
-        .slice(0, 3)
-    ),
-    otherProjects: computed(() =>
-      portfolio.value
-        .getProjects()
-        .toSorted((a, b) => new Date(b.date) - new Date(a.date))
-        .slice(3, 9)
-    ),
+    recentProjects: computed(() => portfolio.value.getRecentProjects(3)),
+    otherProjects: computed(() => {
+      const recentIds = portfolio.value.getRecentProjects(3).map((p) => p.id);
+      return [...portfolio.value.projects]
+        .filter((p) => !recentIds.includes(p.id))
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .slice(0, 6);
+    }),
   };
 }

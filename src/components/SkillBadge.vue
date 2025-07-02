@@ -1,15 +1,65 @@
+<!-- SkillBadge.vue -->
 <template>
-  <button
-    class="skill-badge"
-    :class="{ highlighted, 'cursor-pointer': clickable }"
-    @click="handleClick"
-  >
-    <span class="skill-name">{{ name }}</span>
-    <span v-if="highlighted" class="highlight-indicator">★</span>
-  </button>
+  <div class="skill-badge-container">
+    <button
+      class="skill-badge"
+      :class="{ highlighted }"
+      @mouseenter="showTooltip = true"
+      @mouseleave="hideTooltip()"
+      @click="openProjectModal(primaryProject)"
+    >
+      {{ name }}
+    </button>
+
+    <div
+      v-if="showTooltip && skillData"
+      class="skill-tooltip"
+      @mouseenter="keepTooltipVisible = true"
+      @mouseleave="hideTooltip()"
+    >
+      <div class="tooltip-container">
+        <div class="tooltip-section">
+          <span class="tooltip-label">Level: </span>
+          <span>{{ formattedLevel }}</span>
+          <br />
+          <span class="tooltip-label">Applied in: </span>
+          <span
+            >{{ skillData.count }} project{{
+              skillData.count !== 1 ? "s" : ""
+            }}</span
+          >
+        </div>
+        <br />
+        <div class="projects-list">
+          <div
+            class="project-item"
+            v-for="project in sortedProjects"
+            :key="project.id"
+          >
+            <a
+              v-if="project.id === primaryProject?.id"
+              href="#"
+              class="primary-project"
+              @click.prevent="openProjectModal(primaryProject)"
+            >
+              {{ project.title }} ({{ formatDate(project.date) }})
+            </a>
+            <span v-else>
+              {{ project.title }} ({{ formatDate(project.date) }})
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
+import { computed, ref } from "vue";
+import { useProjectsData } from "@/composables/useProjectsData";
+
+const { getProject, getSkill } = useProjectsData();
+
 const props = defineProps({
   name: {
     type: String,
@@ -25,12 +75,54 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(["click"]);
+const emit = defineEmits(["click", "open-project"]);
 
-const handleClick = () => {
-  if (props.clickable) {
-    emit("click", props.name);
-  }
+const showTooltip = ref(false);
+const keepTooltipVisible = ref(false);
+const hideTimeout = ref(null);
+
+const skillData = computed(() => getSkill(props.name));
+
+const formattedLevel = computed(() => {
+  if (!skillData.value?.level) return "";
+  return (
+    skillData.value.level.charAt(0).toUpperCase() +
+    skillData.value.level.slice(1)
+  );
+});
+
+const sortedProjects = computed(() => {
+  if (!skillData.value?.projects) return [];
+  return [...skillData.value.projects].sort(
+    (a, b) => new Date(b.date) - new Date(a.date)
+  );
+});
+
+const primaryProject = computed(() => {
+  return (
+    sortedProjects.value.find(
+      (project) => getProject(project.id)?.highlighted
+    ) || sortedProjects.value[0]
+  );
+});
+
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("en-US", { year: "numeric", month: "short" });
+};
+
+const openProjectModal = (project) => {
+  emit("open-project", project);
+  hideTooltip();
+};
+
+const hideTooltip = () => {
+  keepTooltipVisible.value = false;
+  hideTimeout.value = setTimeout(() => {
+    if (!keepTooltipVisible.value) {
+      showTooltip.value = false;
+    }
+  }, 30);
 };
 </script>
 
@@ -41,6 +133,72 @@ export default {
 </script>
 
 <style scoped>
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+
+  width: 280px;
+  background: white;
+  color: var(--color-text);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  border: 1px solid var(--color-border);
+}
+
+.skill-tooltip {
+  width: 120px;
+  bottom: 105%;
+  left: -50%;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1000;
+}
+
+.project-item {
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--color-border-mute);
+  font-size: 0.9rem;
+}
+
+.project-item:last-child {
+  border-bottom: none;
+}
+
+.primary-project {
+  margin-top: 0.5rem;
+  padding: 0.3rem 0;
+  color: var(--accent-color);
+  font-weight: 600;
+  cursor: pointer;
+  border-top: 1px solid var(--color-border);
+}
+
+.primary-project:hover {
+  text-decoration: underline;
+}
+
+.projects-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.projects-list::-webkit-scrollbar-track {
+  background: var(--color-background-mute);
+}
+
+.projects-list::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 3px;
+}
+.skill-badge-container {
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+}
+
 .skill-badge {
   display: inline-flex;
   align-items: center;
@@ -56,12 +214,13 @@ export default {
 
 .skill-badge:hover {
   transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .highlighted {
-  background: linear-gradient(145deg, #646cff, #535bf2);
-  color: white;
-  box-shadow: 0 2px 8px rgba(100, 108, 255, 0.3);
+  background: linear-gradient(145deg, #eb4a4a, #d93838);
+  color: rgb(255, 255, 255);
+  box-shadow: 0 2px 8px #fe8080;
   position: relative;
   overflow: hidden;
 }

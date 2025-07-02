@@ -1,16 +1,11 @@
 <template>
-  <div class="modal-overlay" @click.self="emit('close')">
+  <div class="modal-overlay" @click.self="closeModal">
     <div class="modal-content">
-      <button class="close-button" @click="emit('close')">×</button>
+      <button class="close-button" @click="closeModal">×</button>
 
       <div class="modal-header">
-        <h3 class="skill-title">{{ skillName }}</h3>
-        <div
-          v-if="getSkill(props.skillName).isHighlighted"
-          class="highlight-tag"
-        >
-          Highlighted
-        </div>
+        <h3 class="skill-title">{{ skill.name }}</h3>
+        <div v-if="skill.isHighlighted" class="highlight-tag">Highlighted</div>
       </div>
 
       <div class="modal-body">
@@ -20,7 +15,9 @@
             v-if="primaryProject"
             href="#"
             class="project-link"
-            @click.prevent="scrollToProject(primaryProject.id)"
+            @click.prevent="
+              $emit('open-project', getProject(primaryProject.id))
+            "
           >
             {{ primaryProject.title }}
           </a>
@@ -29,15 +26,12 @@
 
         <div class="projects-list">
           <h4>
-            Used in {{ getSkill(props.skillName).projects.length }} project{{
-              getSkill(props.skillName).projects.length !== 1 ? "s" : ""
+            Used in {{ skill.projects.length }} project{{
+              skill.projects.length !== 1 ? "s" : ""
             }}
           </h4>
           <ul>
-            <li
-              v-for="project in getSkill(props.skillName).projects"
-              :key="project.id"
-            >
+            <li v-for="project in skill.projects" :key="project.id">
               {{ project.title }} ({{ formatDate(project.date) }})
             </li>
           </ul>
@@ -51,36 +45,32 @@
 import { computed } from "vue";
 import { useProjectsData } from "@/composables/useProjectsData";
 
-const { getProject, getSkill } = useProjectsData();
+const { getProject } = useProjectsData();
 
 const props = defineProps({
-  skillName: {
-    type: String,
+  skill: {
+    type: Object,
     required: true,
   },
 });
 
-const emit = defineEmits(["close"]);
+const emit = defineEmits(["open-project", "close"]);
 
+const closeModal = () => {
+  emit("close");
+};
 const primaryProject = computed(() => {
   return (
-    getSkill(props.skillName)
-      .projects.toSorted((a, b) => new Date(b.date) - new Date(a.date))
+    props.skill.projects
+      .toSorted((a, b) => new Date(b.date) - new Date(a.date))
       .find((proj) => getProject(proj.id)?.highlighted) ||
-    getSkill(props.skillName).projects[0]
+    props.skill.projects[0]
   );
 });
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
   return date.toLocaleDateString("en-US", { year: "numeric", month: "short" });
-};
-
-const scrollToProject = (projectId) => {
-  emit("close");
-  // You would implement this function to scroll to the project
-  // For example using a Vue ref or a scrollTo function
-  console.log("Scroll to project", projectId);
 };
 </script>
 
@@ -106,6 +96,7 @@ export default {
 
 .modal-content {
   background-color: var(--color-background);
+  color: var(--color-text);
   padding: 2rem;
   border-radius: 8px;
   max-width: 600px;
@@ -138,8 +129,8 @@ export default {
 }
 
 .highlight-tag {
-  background-color: #646cff;
-  color: white;
+  background-color: var(--color-highlight2);
+  color: rgb(255, 255, 255);
   padding: 0.2rem 0.6rem;
   border-radius: 1rem;
   font-size: 0.8rem;
@@ -157,7 +148,7 @@ export default {
 }
 
 .project-link {
-  color: #646cff;
+  color: var(--color-highlight2);
   text-decoration: none;
 }
 
