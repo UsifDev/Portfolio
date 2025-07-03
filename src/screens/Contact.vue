@@ -35,30 +35,34 @@
         </template>
       </div>
     </div>
-    <div class="contact-badges">
-      <div class="badges-frame">
-        <br />
+    <div class="certifcates-container">
+      <h2 class="heading">Certifications</h2>
+      <div class="contact-badges">
+        <div class="badges-frame">
+          <br />
+          <div
+            :data-iframe-width="200"
+            :data-iframe-height="250"
+            :data-share-badge-id="'3708ea5f-914b-42fc-8156-8514fe75ebe2'"
+            data-share-badge-host="https://www.credly.com"
+          ></div>
+        </div>
+
         <div
-          :data-iframe-width="200"
-          :data-iframe-height="250"
-          :data-share-badge-id="'3708ea5f-914b-42fc-8156-8514fe75ebe2'"
-          data-share-badge-host="https://www.credly.com"
-        ></div>
-      </div>
-      <div
-        class="badges-container"
-        :class="`badges-count-${badgesData.length}`"
-      >
-        <a
-          v-for="(badge, index) in badgesData"
-          :key="index"
-          :href="badge.link"
-          target="_blank"
-          class="badge"
-          :title="badge.title || 'View certification'"
+          class="badges-container"
+          :class="`badges-count-${badgesData.length}`"
         >
-          <img :src="badge.image.path" :alt="badge.image.alt" />
-        </a>
+          <a
+            v-for="(badge, index) in badgesData"
+            :key="index"
+            :href="badge.link"
+            target="_blank"
+            class="badge"
+            :title="badge.title || 'View certification'"
+          >
+            <img :src="badge.image.path" :alt="badge.image.alt" />
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -103,8 +107,6 @@ export default {
   gap: var(--gap);
   justify-content: center;
   align-items: center;
-  top: -40px;
-  margin-right: 10%;
 }
 
 .badges-frame {
@@ -200,6 +202,8 @@ export default {
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
   gap: 3rem;
+  padding-top: 70px;
+  padding-bottom: 90px;
 }
 
 .contact-text h4 {
@@ -268,5 +272,33 @@ export default {
 
 .languages {
   margin-top: 2rem;
+}
+
+.heading {
+  align-self: center;
+  justify-self: center;
+
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-size: 2rem;
+  color: white;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.heading::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--accent-color);
+}
+
+.certifcates-container {
+  transform: translateX(-8%);
+  transform: translateY(-8%);
 }
 </style>

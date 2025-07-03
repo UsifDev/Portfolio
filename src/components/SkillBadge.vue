@@ -220,7 +220,6 @@ export default {
 .highlighted {
   background: linear-gradient(145deg, #eb4a4a, #d93838);
   color: rgb(255, 255, 255);
-  box-shadow: 0 2px 8px #fe8080;
   position: relative;
   overflow: hidden;
 }

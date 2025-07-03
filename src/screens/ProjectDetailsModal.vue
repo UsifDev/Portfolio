@@ -18,7 +18,7 @@
             :src="media.url"
             :alt="media.caption || 'Project media'"
             class="media-item"
-            @click="openMediaViewer(media)"
+            @click="openMediaViewer(index)"
           />
         </div>
       </div>
@@ -75,11 +75,11 @@
         </div>
       </div>
     </div>
-
     <MediaViewerComp
-      v-if="selectedMedia"
-      :media="selectedMedia"
-      @close="selectedMedia = null"
+      v-if="showViewer"
+      :media="project.media"
+      :initial-index="currentMediaIndex"
+      @close="showViewer = false"
     />
   </div>
 </template>
@@ -107,9 +107,12 @@ const closeModal = () => {
   emit("close");
 };
 
-const selectedMedia = ref(null);
-const openMediaViewer = (media) => {
-  selectedMedia.value = media;
+const showViewer = ref(false);
+const currentMediaIndex = ref(0);
+
+const openMediaViewer = (index) => {
+  currentMediaIndex.value = index;
+  showViewer.value = true;
 };
 </script>
 

@@ -20,16 +20,12 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
 import { useProjectsData } from "@/composables/useProjectsData";
-
 const { skills, getProject } = useProjectsData();
-const showModal = ref(false);
-const initialObject = ref(null);
 
+const emit = defineEmits(["details-click"]);
 const openProjectModal = (project) => {
-  initialObject.value = getProject(project.id);
-  showModal.value = true;
+  emit("details-click", getProject(project.id));
 };
 </script>
 
@@ -50,12 +46,13 @@ export default {
 .skills-showcase {
   padding: 3rem 0;
   background: var(--bg-color);
+  padding-bottom: 100px;
   margin-bottom: 100px;
 }
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 1px;
   max-width: 1200px;
   margin: 0 auto;
@@ -78,9 +75,22 @@ export default {
 
 .section-title {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   font-size: 2rem;
   color: white;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--accent-color);
 }
 
 @media (max-width: 600px) {

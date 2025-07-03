@@ -4,7 +4,6 @@ export const projectsData = [
     title: "Space Forces",
     description:
       "A 2D strategy game where you deploy ships to destroy and reach the opponent's base. The game has multiple ship types, upgrades and power-ups.",
-    image: "src/assets/image.png",
     date: "2024-09-01",
     highlighted: true,
     lessons: [
@@ -18,12 +17,21 @@ export const projectsData = [
       { name: "Sprites handling", level: "intermediate" },
       { name: "Project Management", level: "beginner" },
     ],
+    media: [
+      {
+        url: "src/assets/image.png",
+        caption: "",
+      },
+      {
+        url: "src/assets/image.png",
+        caption: "says something",
+      },
+    ],
   },
   {
     id: 2,
     title: "Shape Match",
     description: "A casual match-3 game using Unity.",
-    image: "src/assets/image.png",
     date: "2025-06-01",
     highlighted: true,
     lessons: [
@@ -38,13 +46,22 @@ export const projectsData = [
       { name: "Coroutines", level: "beginner" },
       { name: "Collections", level: "intermediate" },
     ],
+    media: [
+      {
+        url: "src/assets/image.png",
+        caption: "",
+      },
+      {
+        url: "src/assets/image.png",
+        caption: "says something",
+      },
+    ],
   },
   {
     id: 3,
     title: "Capstone Project: Get In The Habit (GITH)",
     description:
       "An android habit tracker application with a focus on energy / motivation tracking.",
-    image: "src/assets/image.png",
     date: "2024-06-01",
     highlighted: true,
     lessons: [
@@ -63,13 +80,22 @@ export const projectsData = [
       { name: "Collections", level: "intermediate" },
       { name: "Database Design", level: "intermediate" },
     ],
+    media: [
+      {
+        url: "src/assets/image.png",
+        caption: "",
+      },
+      {
+        url: "src/assets/image.png",
+        caption: "says something",
+      },
+    ],
   },
   {
     id: 4,
     title: "Foodie App",
     description:
       "A restaurant search React-Native web application with Yelp API integration.",
-    image: "src/assets/image.png",
     date: "2023-11-01",
     lessons: [
       "Learned about React-Native hooks and components",
@@ -82,12 +108,21 @@ export const projectsData = [
       { name: "API Integration", level: "intermediate" },
       { name: "Asynchronous Programming", level: "beginner" },
     ],
+    media: [
+      {
+        url: "src/assets/image.png",
+        caption: "",
+      },
+      {
+        url: "src/assets/image.png",
+        caption: "says something",
+      },
+    ],
   },
   {
     id: 5,
     title: "This portfolio 😄",
     description: "Built using Vue.",
-    image: "src/assets/image.png",
     date: "2025-07-01",
     highlighted: true,
     lessons: [
@@ -100,6 +135,16 @@ export const projectsData = [
       { name: "JavaScript", level: "advanced" },
       { name: "Vue", level: "beginner" },
       { name: "Composables", level: "intermediate" },
+    ],
+    media: [
+      {
+        url: "src/assets/image.png",
+        caption: "",
+      },
+      {
+        url: "src/assets/image.png",
+        caption: "says something",
+      },
     ],
   },
 ];

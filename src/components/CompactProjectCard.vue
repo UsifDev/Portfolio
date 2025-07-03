@@ -21,7 +21,11 @@
     <transition name="slide-up">
       <div v-if="isHovered" class="image-preview">
         <div class="accent-bar"></div>
-        <img :src="project.image" :alt="project.title" class="preview-image" />
+        <img
+          :src="project.media[0].url"
+          :alt="project.title + ' preview image'"
+          class="preview-image"
+        />
       </div>
     </transition>
   </div>

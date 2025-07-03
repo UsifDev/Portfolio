@@ -18,17 +18,32 @@
         <br v-if="i == aboutData.description.length" />
       </div>
       <div class="about-gri">
-        <div class="about-in" v-for="(skill, i) in aboutData.skills" :key="i">
-          <h5>{{ skill }}</h5>
+        <div class="about-in" v-for="(skill, i) in skills.slice(0, 4)" :key="i">
+          <SkillBadgeComp
+            :name="skill.name"
+            :highlighted="skill.isHighlighted"
+            clickable
+            @open-project="openProjectModal"
+          />
         </div>
       </div>
     </div>
   </section>
 </template>
 
+<script setup>
+import { useProjectsData } from "@/composables/useProjectsData";
+const { skills, getProject } = useProjectsData();
+
+const emit = defineEmits(["details-click"]);
+const openProjectModal = (project) => {
+  emit("details-click", getProject(project.id));
+};
+</script>
+
 <script>
 import { aboutData } from "@/assets/data.js";
-
+import SkillBadgeComp from "@/components/SkillBadge.vue";
 export default {
   data() {
     return {
@@ -36,6 +51,9 @@ export default {
     };
   },
   name: "AboutComp",
+  components: {
+    SkillBadgeComp,
+  },
 };
 </script>
 
@@ -47,6 +65,8 @@ export default {
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  padding-top: 90px;
+  padding-bottom: 70px;
 }
 
 .about-img img {
@@ -87,12 +107,8 @@ export default {
   grid-template-columns: repeat(auto-fit, minmax(280px, auto));
   grid-template-rows: repeat(auto-fit, minmax(70px, auto));
   align-items: center;
+  justify-content: center;
+  justify-items: center;
   gap: 1rem;
-  margin-bottom: 3rem;
-}
-
-.about-in h5 {
-  font-size: 22px;
-  font-weight: 600;
 }
 </style>

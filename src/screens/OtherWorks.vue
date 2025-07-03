@@ -9,36 +9,25 @@
         @details-click="openProjectModal(project)"
       />
     </div>
-    <ProjectDetailsModalComp
-      v-if="showModal"
-      :initial-project="initialObject"
-      @close="showModal = false"
-    />
   </section>
 </template>
 
 <script setup>
-import { ref } from "vue";
 import { useProjectsData } from "@/composables/useProjectsData";
 const { otherProjects } = useProjectsData();
 
-const showModal = ref(false);
-const initialObject = ref(null);
-
+const emit = defineEmits(["details-click"]);
 const openProjectModal = (project) => {
-  initialObject.value = project;
-  showModal.value = true;
+  emit("details-click", project);
 };
 </script>
 
 <script>
 import CompactProjectCardComp from "@/components/CompactProjectCard.vue";
-import ProjectDetailsModalComp from "./ProjectDetailsModal.vue";
 export default {
   name: "OtherWorksComp",
   components: {
     CompactProjectCardComp,
-    ProjectDetailsModalComp,
   },
 };
 </script>

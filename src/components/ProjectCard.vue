@@ -6,10 +6,11 @@
       @mouseleave="showFullImage = false"
     >
       <img
-        :src="project.image"
-        :alt="project.title"
+        :src="project.media[0].url"
+        :alt="project.title + ' preview image'"
         class="project-image"
         :class="{ 'full-image': showFullImage }"
+        @click="openMediaViewer(0)"
       />
       <div v-if="showFullImage" class="image-overlay"></div>
     </div>
@@ -43,6 +44,13 @@
       />
     </div>
   </div>
+
+  <MediaViewerComp
+    v-if="showViewer"
+    :media="project.media"
+    :initial-index="currentMediaIndex"
+    @close="showViewer = false"
+  />
 </template>
 
 <script setup>
@@ -50,14 +58,13 @@ import { ref, computed } from "vue";
 import { useProjectsData } from "@/composables/useProjectsData";
 const { getSkill } = useProjectsData();
 
-const emit = defineEmits(["details-click"]);
-
 const props = defineProps({
   project: {
     type: Object,
     required: true,
   },
 });
+const emit = defineEmits(["details-click"]);
 
 const openProjectModal = () => {
   emit("details-click", props.project);
@@ -67,15 +74,25 @@ const showFullImage = ref(false);
 
 // Limit number of skills displayed based on card height
 const displayedSkills = computed(() => props.project.skills.slice(0, 5));
+
+const showViewer = ref(false);
+const currentMediaIndex = ref(0);
+
+const openMediaViewer = (index) => {
+  currentMediaIndex.value = index;
+  showViewer.value = true;
+};
 </script>
 
 <script>
 import SkillBadgeComp from "./SkillBadge.vue";
+import MediaViewerComp from "@/screens/MediaViewer.vue";
 
 export default {
   name: "ProjectCardComp",
   components: {
     SkillBadgeComp,
+    MediaViewerComp,
   },
 };
 </script>

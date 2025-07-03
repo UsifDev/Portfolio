@@ -33,7 +33,7 @@ export default {
 
 <style scoped>
 .home {
-  height: 100vh;
+  height: 90vh;
   width: 100%;
   position: relative;
   display: flex;
