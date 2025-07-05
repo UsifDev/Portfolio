@@ -18,18 +18,12 @@
       @mouseleave="hideTooltip()"
     >
       <div class="tooltip-container">
-        <div class="tooltip-section">
+        <div v-if="level != null" class="tooltip-section">
           <span class="tooltip-label">Level: </span>
           <span>{{ formattedLevel }}</span>
-          <br />
-          <span class="tooltip-label">Applied in: </span>
-          <span
-            >{{ skillData.count }} project{{
-              skillData.count !== 1 ? "s" : ""
-            }}</span
-          >
+          <br /><br />
         </div>
-        <br />
+        
         <div class="projects-list">
           <div
             class="project-item"
@@ -73,6 +67,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  level: {
+    type: String,
+    default: null,
+  }
 });
 
 const emit = defineEmits(["click", "open-project"]);
@@ -84,10 +82,9 @@ const hideTimeout = ref(null);
 const skillData = computed(() => getSkill(props.name));
 
 const formattedLevel = computed(() => {
-  if (!skillData.value?.level) return "";
   return (
-    skillData.value.level.charAt(0).toUpperCase() +
-    skillData.value.level.slice(1)
+    props.level?.charAt(0).toUpperCase() +
+    props.level?.slice(1)
   );
 });
 

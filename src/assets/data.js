@@ -3,19 +3,22 @@ export const projectsData = [
     id: 1,
     title: "Space Forces",
     description:
-      "A 2D strategy game where you deploy ships to destroy and reach the opponent's base. The game has multiple ship types, upgrades and power-ups.",
+      "An android 2D strategy game made in GlistEngine where you deploy ships to destroy and reach the opponent's base similar to Clash Royale. The game has multiple ship types, upgrades and power-ups.",
     date: "2024-09-01",
     highlighted: true,
     lessons: [
-      "Organized features into smaller manageable tasks",
-      "Separated game logic into reusable functions or sub-routines",
-      "Leveraged structs to contain and mutate closely-tied data",
+      "how to organize features into smaller manageable tasks to account for project deadline.",
+      "Separated game logic into reusable functions / sub-routines for convenience and debugging.",
+      "Leveraged structs to contain and mutate closely-tied data including sprites.",
     ],
+    challenge: "Given only 6 weeks to develop the entire game alone, I organized my tasks effectively by breaking up the project into features and stages which allowed me to have a little extra time to add some polish to the game.",
     skills: [
       { name: "C++", level: "advanced" },
-      { name: "Procedural programming", level: "intermediate" },
-      { name: "Sprites handling", level: "intermediate" },
+      { name: "Procedural Programming", level: "intermediate" },
       { name: "Project Management", level: "beginner" },
+      { name: "Optimization", level: "intermediate" },
+      { name: "Debugging", level: "intermediate" },
+      { name: "Android", level: "intermediate" },
     ],
     media: [
       {
@@ -26,25 +29,34 @@ export const projectsData = [
         url: "src/assets/image.png",
         caption: "says something",
       },
+            {
+        url: "src/assets/image.png",
+        caption: "",
+      },
     ],
   },
   {
     id: 2,
     title: "Shape Match",
-    description: "A casual match-3 game using Unity.",
+    description: "A casual match-3 game made in Unity as a submission for the junior programmer pathway to demonstrate the four pillars of OOP.",
     date: "2025-06-01",
     highlighted: true,
     lessons: [
-      "Learned about C# task-based asynchronous programming",
-      "Implemented touch handling with Unity Input System",
-      "Object Oriented game programming",
+      "Learned about C# task-based asynchronous programming.",
+      "Implemented touch handling with Unity Input System.",
+      "Leveraged strategy design pattern for physics-based animation handling and swapping.",
+      "Utilized singleton patterns for settings, spawning and general game management."
     ],
+    challenge: "Having built the game before using an asynchronous technique, I wanted to build it again without any fancy techniques for the course submission. So, I reused some code and implemented similar game state management to Space Forces which allowed me to finish the project within one week.",
     skills: [
       { name: "C#", level: "advanced" },
       { name: "Asynchronous Programming", level: "intermediate" },
       { name: "Unity", level: "intermediate" },
       { name: "Coroutines", level: "beginner" },
       { name: "Collections", level: "intermediate" },
+      { name: "Optimization", level: "beginner" },
+      { name: "Software Design", level: "intermediate" },
+      { name: "Project Management", level: "beginner" },
     ],
     media: [
       {
@@ -65,20 +77,25 @@ export const projectsData = [
     date: "2024-06-01",
     highlighted: true,
     lessons: [
-      "Designed the app with MVVM and Clean architectures",
-      "Used coroutines",
-      "Implemented Composables with Jetpack Compose in Kotlin",
+      "Designed the app with MVVM and Clean architectures for scalability and maintainability.",
+      "Converted Figma designs to Android Composables with Relay tool.",
+      "Implemented the database with Room for convenience and SQL query verification.",
+      "Applied advanced Kotlin programming features such as coroutines (for db transactions), scope functions and collection iterators (for cleaner consise code).",
     ],
+      challenge: "Being under a short time and having no prior experience in Kotlin nor Android development, this project was the most challenging. I followed a strict workflow, outlining tasks required as i go and iterating when necessary, achieveing a good quality result in respect to the constraints and learning A LOT about android development through the official documentation.",
     skills: [
       { name: "Kotlin", level: "advanced" },
-      { name: "Software Architecture", level: "intermediate" },
+      { name: "Software Design", level: "advanced" },
       { name: "Composables", level: "intermediate" },
-      { name: "Navigation Component", level: "beginner" },
       { name: "Project Management", level: "intermediate" },
-      { name: "Technical Writing", level: "beginner" },
+      { name: "Technical Writing", level: "intermediate" },
       { name: "Coroutines", level: "beginner" },
       { name: "Collections", level: "intermediate" },
-      { name: "Database Design", level: "intermediate" },
+      { name: "Database Design", level: "advanced" },
+      { name: "Debugging", level: "intermediate" },
+      { name: "Android", level: "beginner" },
+      { name: "Search Functionality", level: "intermediate" },
+      { name: "Figma", level: "intermediate" },
     ],
     media: [
       {
@@ -95,15 +112,16 @@ export const projectsData = [
     id: 4,
     title: "Foodie App",
     description:
-      "A restaurant search React-Native web application with Yelp API integration.",
+      "A restaurant search web application made using React-Native and Yelp API.",
     date: "2023-11-01",
     lessons: [
-      "Learned about React-Native hooks and components",
-      "Integrated external API calls",
-      "Implemented various sorting and ordering options",
+      "Learned about React-Native hooks and components.",
+      "Integrated Yelp search API.",
+      "Implemented various sorting and ordering options.",
+      "Debugged and tested using Expo Go.",
     ],
     skills: [
-      { name: "Data Organizing", level: "intermediate" },
+      { name: "Search Functionality", level: "intermediate" },
       { name: "JavaScript", level: "intermediate" },
       { name: "API Integration", level: "intermediate" },
       { name: "Asynchronous Programming", level: "beginner" },
@@ -126,15 +144,39 @@ export const projectsData = [
     date: "2025-07-01",
     highlighted: true,
     lessons: [
-      "Learned about static webpage hosting with GitHub",
-      "Implemented Vue SFCs",
-      "",
+      "Learned about static webpage hosting with GitHub.",
+      "Built and Deployed using Vite.",
     ],
     skills: [
-      { name: "h", level: "intermediate" },
-      { name: "JavaScript", level: "advanced" },
+      { name: "JavaScript", level: "intermediate" },
       { name: "Vue", level: "beginner" },
       { name: "Composables", level: "intermediate" },
+    ],
+    media: [
+      {
+        url: "src/assets/image.png",
+        caption: "",
+      },
+      {
+        url: "src/assets/image.png",
+        caption: "says something",
+      },
+    ],
+  },
+    {
+    id: 6,
+    title: "Fingerprint recognition with MatLab",
+    description: "A fingerprint recognition system using LBP technique and pattern recognition.",
+    date: "2024-05-01",
+    lessons: [
+      "Learned about using structuring elements to recognize object features within a small pixel neighborhood.",
+      "How to use MatlLab and process images in bulk.",
+      "How to present densely informative subjects in a consise way.",
+    ],
+    skills: [
+      { name: "Image Processing", level: "intermediate" },
+      { name: "Feature extraction", level: "beginner" },
+      { name: "Procedural Programming", level: "intermediate" },
     ],
     media: [
       {
@@ -183,10 +225,9 @@ export const homeData = {
 export const aboutData = {
   image: new img("src/assets/dev icon.png", "Developer Icon"),
   description: [
-    "I am a Software Engineering graduate of Istanbul Aydin University, on my way in specializing in <strong>video game developement</strong>.",
-    "I like learning new things, solving problems and coming up with creative solutions. I am <strong>open</strong> to applying my skills in <strong>other software fields</strong> too.",
-  ],
-  skills: ["Code Organization", "OOP", "Optimization", "Clean code"],
+    "I am a Software Engineering graduate, strongly interested in <strong>video game development</strong>. Being a gamer myself and somewhat of a perfectionist, I have a unique insight and experience in the industry. In particular, <strong>I can identify key interactive experience elements</strong> and ways to improve the <strong>quality</strong> of the frontend of applications and video games.",
+    "I like learning new things, optimizing stuff and developing software to solve various types of problems. I am <strong>open to</strong> applying my skills in <strong>other software fields</strong> too.",
+  ]
 };
 
 export const contactData = {

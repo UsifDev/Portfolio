@@ -32,6 +32,13 @@ export class ProjectsDataStore {
             projects: [],
             isHighlighted: false,
           });
+        } else {
+          if(skill.level.toLowerCase() != skillMap.get(skill.name).level.toLowerCase())
+          {
+            const a = this._convertLevelToNumber(skill.level.toLowerCase());
+            const b = this._convertLevelToNumber(skillMap.get(skill.name).level.toLowerCase());
+            if(a > b) skillMap.get(skill.name).level = skill.level;
+          }
         }
         const skillData = skillMap.get(skill.name);
         skillData.count++;
@@ -46,10 +53,6 @@ export class ProjectsDataStore {
 
     this.skills = Array.from(skillMap.values());
     this._highlightTopSkills();
-
-    this.skills.forEach((skill) => {
-      skill.level = this._calculateSkillLevel(skill.name);
-    });
   }
 
   _highlightTopSkills() {
@@ -149,7 +152,7 @@ export class ProjectsDataStore {
       }
 
       // Add weighted skill level value
-      score += skillLevelWeights[fullSkill.level.toLowerCase()] || 0;
+      score += skillLevelWeights[this._calculateSkillLevel(fullSkill.name).toLowerCase()] || 0;
     });
 
     // Add small recency factor (so newer projects with same score appear first)

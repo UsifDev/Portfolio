@@ -45,23 +45,16 @@
 
       <div
         class="challenges-section"
-        v-if="project.challenges && project.challenges.length"
+        v-if="project.challenge"
       >
         <h3>Challenges Overcome</h3>
-        <ul>
-          <li
-            v-for="(challenge, index) in project.challenges"
-            :key="`challenge-${index}`"
-          >
-            {{ challenge }}
-          </li>
-        </ul>
+        {{ project.challenge }}
       </div>
 
       <div class="accent-separator"></div>
 
       <div class="skills-section">
-        <h3>Technologies Used</h3>
+        <h3>Skills Applied</h3>
         <div class="skills-grid">
           <SkillBadgeComp
             class="badge"
@@ -70,6 +63,7 @@
             :name="skill.name"
             :highlighted="getSkill(skill.name).isHighlighted"
             clickable
+            :level="skill.level"
             @open-project="onProjectChanged"
           />
         </div>
@@ -199,29 +193,49 @@ export default {
 }
 
 .media-section {
-  margin: 1.5rem 0;
+  margin: 0.5rem 0;
+  width: 100%;
+  overflow-x: auto; /* Allows horizontal scrolling if needed */
 }
 
 .media-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  display: flex;
   gap: 1rem;
+  padding-bottom: 1.5rem; /* Add some vertical padding */
   margin-top: 1rem;
+  width: max-content; /* Let container expand horizontally */
+  min-width: 100%; /* Ensure it fills parent width */
 }
 
 .media-item {
-  width: 100%;
+  width: 200px; /* Fixed width for consistent items */
   height: 150px;
+  min-width: 200px; /* Prevent shrinking */
   object-fit: cover;
   border-radius: 4px;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.2s, border-color 0.2s;
   border: 2px solid var(--color-border);
 }
 
 .media-item:hover {
   transform: scale(1.02);
   border-color: var(--accent-color);
+}
+
+/* Optional: Style scrollbar for horizontal scrolling */
+.media-section::-webkit-scrollbar {
+  height: 7px;
+}
+
+.media-section::-webkit-scrollbar-track {
+  background: var(--color-background-mute);
+  border-radius: 4px;
+}
+
+.media-section::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 4px;
 }
 
 .description-section,

@@ -11,11 +11,6 @@
         />
       </div>
     </div>
-    <ProjectDetailsModalComp
-      v-if="showModal"
-      :initial-project="initialObject"
-      @close="showModal = false"
-    />
   </section>
 </template>
 
@@ -31,12 +26,10 @@ const openProjectModal = (project) => {
 
 <script>
 import SkillBadgeComp from "@/components/SkillBadge.vue";
-import ProjectDetailsModalComp from "./ProjectDetailsModal.vue";
 
 export default {
   name: "SkillsShowcaseComp",
   components: {
-    ProjectDetailsModalComp,
     SkillBadgeComp,
   },
 };
