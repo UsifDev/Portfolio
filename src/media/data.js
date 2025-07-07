@@ -288,7 +288,7 @@ export const homeData = {
 };
 
 export const aboutData = {
-  image: new img("@/media/dev icon.png", "Developer Icon"),
+  image: new img(new URL('./media/dev icon.png', import.meta.url).href, "Developer Icon"),
   description: [
     "I am a Software Engineering graduate, strongly interested in <strong>video game development</strong>. Being a gamer and somewhat of a perfectionist, I have a unique insight and experience in the industry that enables me to swiftly <strong>identify key interactive experience elements</strong> and come up with ways to improve the <strong>user experience</strong> and/or feel of applications and video games.",
     "I like learning new things, optimizing stuff and developing software to solve various types of problems. Most of my skills are transferable and I am <strong>open to</strong> applying them in <strong>other software fields</strong> too.",
