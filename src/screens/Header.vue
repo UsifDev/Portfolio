@@ -13,7 +13,7 @@
 
 <script>
 import DevNameComp from "@/components/DevName.vue";
-import { headerData } from "@/media/data.js";
+import { headerData } from "@/assets/data.js";
 
 export default {
   data() {

@@ -69,7 +69,7 @@
 </template>
 
 <script>
-import { contactData, badgesData } from "@/media/data.js";
+import { contactData, badgesData } from "@/assets/data.js";
 
 export default {
   data() {

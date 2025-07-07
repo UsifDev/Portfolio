@@ -23,31 +23,31 @@ export const projectsData = [
     ],
     media: [
       {
-        url: "@/media/projects/space_forces/1.jpg",
+        url: "/projects/space_forces/1.jpg",
         caption: "Main Menu",
       },
       {
-        url: "@/media/projects/space_forces/2.jpg",
+        url: "/projects/space_forces/2.jpg",
         caption: "Ship Selection",
       },
       {
-        url: "@/media/projects/space_forces/3.jpg",
+        url: "/projects/space_forces/3.jpg",
         caption: "Upgrades Shop Screen",
       },
       {
-        url: "@/media/projects/space_forces/4.jpg",
+        url: "/projects/space_forces/4.jpg",
         caption: "Gameplay",
       },
       {
-        url: "@/media/projects/space_forces/5.jpg",
+        url: "/projects/space_forces/5.jpg",
         caption: "Combo",
       },
       {
-        url: "@/media/projects/space_forces/6.jpg",
+        url: "/projects/space_forces/6.jpg",
         caption: "Gameplay",
       },
       {
-        url: "@/media/projects/space_forces/7.jpg",
+        url: "/projects/space_forces/7.jpg",
         caption: "Game Result",
       },
     ],
@@ -80,23 +80,23 @@ export const projectsData = [
     ],
     media: [
       {
-        url: "@/media/projects/shape_match/1.png",
+        url: "/projects/shape_match/1.png",
         caption: "Main Menu",
       },
       {
-        url: "@/media/projects/shape_match/2.png",
+        url: "/projects/shape_match/2.png",
         caption: "Gameplay",
       },
       {
-        url: "@/media/projects/shape_match/3.png",
+        url: "/projects/shape_match/3.png",
         caption: "Randomization Example",
       },
       {
-        url: "@/media/projects/shape_match/4.png",
+        url: "/projects/shape_match/4.png",
         caption: "Particle Effects",
       },
       {
-        url: "@/media/projects/shape_match/5.gif",
+        url: "/projects/shape_match/5.gif",
         caption: "Asyncronous Technique",
       },
     ],
@@ -132,31 +132,31 @@ export const projectsData = [
     ],
     media: [
       {
-        url: "@/media/projects/GITH/1.jpg",
+        url: "/projects/GITH/1.jpg",
         caption: "Habits List",
       },
       {
-        url: "@/media/projects/GITH/2.jpg",
+        url: "/projects/GITH/2.jpg",
         caption: "Habit Editor",
       },
       {
-        url: "@/media/projects/GITH/3.jpg",
+        url: "/projects/GITH/3.jpg",
         caption: "Routines List",
       },
       {
-        url: "@/media/projects/GITH/4.jpg",
+        url: "/projects/GITH/4.jpg",
         caption: "Routine Editor",
       },
       {
-        url: "@/media/projects/GITH/5.jpg",
+        url: "/projects/GITH/5.jpg",
         caption: "Categories List",
       },
       {
-        url: "@/media/projects/GITH/6.jpg",
+        url: "/projects/GITH/6.jpg",
         caption: "Category Editor",
       },
       {
-        url: "@/media/projects/GITH/7.png",
+        url: "/projects/GITH/7.png",
         caption: "Domain Model",
       },
     ],
@@ -181,15 +181,15 @@ export const projectsData = [
     ],
     media: [
       {
-        url: "@/media/projects/foodie_app/1.jpg",
+        url: "/projects/foodie_app/1.jpg",
         caption: "Home Screen",
       },
       {
-        url: "@/media/projects/foodie_app/2.jpg",
+        url: "/projects/foodie_app/2.jpg",
         caption: "Search Screen",
       },
       {
-        url: "@/media/projects/foodie_app/3.jpg",
+        url: "/projects/foodie_app/3.jpg",
         caption: "Yelp Link",
       },
     ],
@@ -228,11 +228,11 @@ export const projectsData = [
     ],
     media: [
       {
-        url: "@/media/projects/image_proc/1.png",
+        url: "/projects/image_proc/1.png",
         caption: "LBP enhancement",
       },
       {
-        url: "@/media/projects/image_proc/2.png",
+        url: "/projects/image_proc/2.png",
         caption: "Fingerprint Image Processing",
       },
     ],
@@ -284,11 +284,11 @@ export const headerData = {
 export const homeData = {
   greeting: "Hello, My name is",
   role: "Game Developer and Software Engineer",
-  resumeLink: "@/media/Bite-sized CV.pdf",
+  resumeLink: "/Bite-sized CV.pdf",
 };
 
 export const aboutData = {
-  image: new img(new URL('./media/dev icon.png', import.meta.url).href, "Developer Icon"),
+  image: new img("/dev icon.png", "Developer Icon"),
   description: [
     "I am a Software Engineering graduate, strongly interested in <strong>video game development</strong>. Being a gamer and somewhat of a perfectionist, I have a unique insight and experience in the industry that enables me to swiftly <strong>identify key interactive experience elements</strong> and come up with ways to improve the <strong>user experience</strong> and/or feel of applications and video games.",
     "I like learning new things, optimizing stuff and developing software to solve various types of problems. Most of my skills are transferable and I am <strong>open to</strong> applying them in <strong>other software fields</strong> too.",
@@ -311,17 +311,17 @@ export const contactData = {
 
 export const badgesData = [
   new badge(
-    new img("@/media/companies/microsoft.png"),
+    new img("/companies/microsoft.png"),
     "https://www.freecodecamp.org/certification/UsifDev/foundational-c-sharp-with-microsoft",
     "C# Foundations",
   ),
   new badge(
-    new img("@/media/ml-projects.jpg"),
+    new img("/ml-projects.jpg"),
     "https://www.freecodecamp.org/certification/usifdev/machine-learning-with-python-v7",
     "ML with Python",
   ),
   new badge(
-    new img("@/media/web-dev-icon.png"),
+    new img("/web-dev-icon.png"),
     "https://www.freecodecamp.org/certification/UsifDev/responsive-web-design",
     "Responsive Design",
   ),

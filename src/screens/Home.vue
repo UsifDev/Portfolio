@@ -1,7 +1,7 @@
 <template>
   <section class="home" id="home">
     <video autoplay loop muted plays-inline class="back-video">
-      <source src="@/media/portfolioBackground.mp4" type="video/mp4" />
+      <source src="/portfolioBackground.mp4" type="video/mp4" />
     </video>
     <div class="home-text">
       <h4>{{ homeData.greeting }}</h4>
@@ -16,7 +16,7 @@
 
 <script>
 import DevNameComp from "@/components/DevName.vue";
-import { homeData } from "@/media/data.js";
+import { homeData } from "@/assets/data.js";
 
 export default {
   data() {

@@ -1,6 +1,6 @@
 import { ref, computed } from "vue";
-import { projectsData } from "@/media/data.js";
-import { ProjectsDataStore } from "@/media/ProjectsData.js";
+import { projectsData } from "@/assets/data.js";
+import { ProjectsDataStore } from "@/assets/ProjectsData.js";
 
 const portfolio = ref(ProjectsDataStore.getInstance(projectsData));
 
