@@ -83,7 +83,7 @@ export default {
       // Check if script is already loaded
       if (
         document.querySelector(
-          'script[src="//cdn.credly.com/assets/utilities/embed.js"]'
+          'script[src="//cdn.credly.com/assets/utilities/embed.js"]',
         )
       ) {
         return;

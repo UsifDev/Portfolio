@@ -11,7 +11,8 @@ export const projectsData = [
       "Separated game logic into reusable functions / sub-routines for convenience and debugging.",
       "Leveraged structs to contain and mutate closely-tied data including sprites.",
     ],
-    challenge: "Given only 6 weeks to develop the entire game alone, I organized my tasks effectively by breaking up the project into features and stages which allowed me to have a little extra time to add some polish to the game.",
+    challenge:
+      "Given only 6 weeks to develop the entire game alone, I organized my tasks effectively by breaking up the project into features and stages which allowed me to have a little extra time to add some polish to the game.",
     skills: [
       { name: "C++", level: "advanced" },
       { name: "Procedural Programming", level: "intermediate" },
@@ -54,16 +55,18 @@ export const projectsData = [
   {
     id: 2,
     title: "Shape Match",
-    description: "A casual match-3 game made in Unity as a submission for the junior programmer pathway to demonstrate the four pillars of OOP.",
+    description:
+      "A casual match-3 game made in Unity as a submission for the junior programmer pathway to demonstrate the four pillars of OOP.",
     date: "2025-06-01",
     highlighted: true,
     lessons: [
       "Learned about C# task-based asynchronous programming.",
       "Implemented touch handling with Unity Input System.",
       "Leveraged strategy design pattern for physics-based animation handling and swapping.",
-      "Utilized singleton patterns for settings, spawning and general game management."
+      "Utilized singleton patterns for settings, spawning and general game management.",
     ],
-    challenge: "Having built the game before using an asynchronous technique, I wanted to build it again without that technique for the course submission and that meant i needed a much more meticuluos state handling approach to ensure proper animation handling. So, I reused some code and implemented similar game state management to Space Forces which allowed me to finish the project within one week.",
+    challenge:
+      "Having built the game before using an asynchronous technique, I wanted to build it again without that technique for the course submission and that meant i needed a much more meticuluos state handling approach to ensure proper animation handling. So, I reused some code and implemented similar game state management to Space Forces which allowed me to finish the project within one week.",
     skills: [
       { name: "C#", level: "advanced" },
       { name: "Asynchronous Programming", level: "intermediate" },
@@ -111,7 +114,8 @@ export const projectsData = [
       "Implemented the database with Room for convenience and SQL query verification.",
       "Applied advanced Kotlin programming features such as coroutines (for db transactions), scope functions and collection iterators (for cleaner consise code).",
     ],
-      challenge: "Being under a short time and having no prior experience in Kotlin nor Android development, this project was the most challenging. I followed a strict workflow, outlining the tasks required as i go and iterating when necessary, achieveing a good quality result in respect to the constraints and learning A LOT about android development in the process.",
+    challenge:
+      "Being under a short time and having no prior experience in Kotlin nor Android development, this project was the most challenging. I followed a strict workflow, outlining the tasks required as i go and iterating when necessary, achieveing a good quality result in respect to the constraints and learning A LOT about android development in the process.",
     skills: [
       { name: "Kotlin", level: "advanced" },
       { name: "Software Design", level: "advanced" },
@@ -180,7 +184,7 @@ export const projectsData = [
         url: "./src/assets/projects/foodie_app/1.jpg",
         caption: "Home Screen",
       },
-      { 
+      {
         url: "./src/assets/projects/foodie_app/2.jpg",
         caption: "Search Screen",
       },
@@ -206,10 +210,11 @@ export const projectsData = [
       { name: "Visual Design", level: "beginner" },
     ],
   },
-    {
+  {
     id: 6,
     title: "Fingerprint recognition with MatLab",
-    description: "A fingerprint recognition system using LBP technique and pattern recognition.",
+    description:
+      "A fingerprint recognition system using LBP technique and pattern recognition.",
     date: "2024-05-01",
     lessons: [
       "Learned about using structuring elements to recognize object features within a small pixel neighborhood.",
@@ -232,7 +237,7 @@ export const projectsData = [
       },
     ],
   },
-    {
+  {
     id: 7,
     title: "SMS Spam Classification",
     description: "A text classifier that flags spam messages.",
@@ -287,7 +292,7 @@ export const aboutData = {
   description: [
     "I am a Software Engineering graduate, strongly interested in <strong>video game development</strong>. Being a gamer and somewhat of a perfectionist, I have a unique insight and experience in the industry that enables me to swiftly <strong>identify key interactive experience elements</strong> and come up with ways to improve the <strong>user experience</strong> and/or feel of applications and video games.",
     "I like learning new things, optimizing stuff and developing software to solve various types of problems. Most of my skills are transferable and I am <strong>open to</strong> applying them in <strong>other software fields</strong> too.",
-  ]
+  ],
 };
 
 export const contactData = {
@@ -308,16 +313,16 @@ export const badgesData = [
   new badge(
     new img("./src/assets/companies/microsoft.png"),
     "https://www.freecodecamp.org/certification/UsifDev/foundational-c-sharp-with-microsoft",
-    "C# Foundations"
+    "C# Foundations",
   ),
   new badge(
     new img("./src/assets/ml-projects.jpg"),
     "https://www.freecodecamp.org/certification/usifdev/machine-learning-with-python-v7",
-    "ML with Python"
+    "ML with Python",
   ),
   new badge(
     new img("./src/assets/web-dev-icon.png"),
     "https://www.freecodecamp.org/certification/UsifDev/responsive-web-design",
-    "Responsive Design"
+    "Responsive Design",
   ),
 ];

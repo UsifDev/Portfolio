@@ -14,7 +14,7 @@ export function useProjectsData() {
     getProject: (id) => portfolio.value.getProjectById(id),
     skills: computed(() => portfolio.value.getSkills()),
     highlightedSkills: computed(() =>
-      portfolio.value.getSkills().filter((s) => s.isHighlighted)
+      portfolio.value.getSkills().filter((s) => s.isHighlighted),
     ),
     recentProjects: computed(() => portfolio.value.getRecentProjects(3)),
     otherProjects: computed(() => {

@@ -23,7 +23,7 @@
           <span>{{ formattedLevel }}</span>
           <br /><br />
         </div>
-        
+
         <div class="projects-list">
           <div
             class="project-item"
@@ -70,7 +70,7 @@ const props = defineProps({
   level: {
     type: String,
     default: null,
-  }
+  },
 });
 
 const emit = defineEmits(["click", "open-project"]);
@@ -82,23 +82,20 @@ const hideTimeout = ref(null);
 const skillData = computed(() => getSkill(props.name));
 
 const formattedLevel = computed(() => {
-  return (
-    props.level?.charAt(0).toUpperCase() +
-    props.level?.slice(1)
-  );
+  return props.level?.charAt(0).toUpperCase() + props.level?.slice(1);
 });
 
 const sortedProjects = computed(() => {
   if (!skillData.value?.projects) return [];
   return [...skillData.value.projects].sort(
-    (a, b) => new Date(b.date) - new Date(a.date)
+    (a, b) => new Date(b.date) - new Date(a.date),
   );
 });
 
 const primaryProject = computed(() => {
   return (
     sortedProjects.value.find(
-      (project) => getProject(project.id)?.highlighted
+      (project) => getProject(project.id)?.highlighted,
     ) || sortedProjects.value[0]
   );
 });

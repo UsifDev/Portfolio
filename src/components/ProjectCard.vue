@@ -1,6 +1,7 @@
 <template>
   <div class="project-card">
-    <div v-if="project.media"
+    <div
+      v-if="project.media"
       class="image-container"
       @mouseenter="showFullImage = true"
       @mouseleave="showFullImage = false"
@@ -32,7 +33,7 @@
         </ul>
       </div>
       <div class="CTA">
-      <p class="btn" @click="openProjectModal">View Details</p>
+        <p class="btn" @click="openProjectModal">View Details</p>
       </div>
     </div>
 
@@ -101,7 +102,6 @@ export default {
 </script>
 
 <style scoped>
-
 .project-card {
   display: flex;
   max-width: 1200px;

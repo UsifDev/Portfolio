@@ -43,10 +43,7 @@
         </ul>
       </div>
 
-      <div
-        class="challenges-section"
-        v-if="project.challenge"
-      >
+      <div class="challenges-section" v-if="project.challenge">
         <h3>Challenges Overcome</h3>
         {{ project.challenge }}
       </div>
@@ -214,7 +211,9 @@ export default {
   object-fit: cover;
   border-radius: 4px;
   cursor: pointer;
-  transition: transform 0.2s, border-color 0.2s;
+  transition:
+    transform 0.2s,
+    border-color 0.2s;
   border: 2px solid var(--color-border);
 }
 

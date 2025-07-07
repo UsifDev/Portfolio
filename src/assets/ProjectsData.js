@@ -33,11 +33,15 @@ export class ProjectsDataStore {
             isHighlighted: false,
           });
         } else {
-          if(skill.level.toLowerCase() != skillMap.get(skill.name).level.toLowerCase())
-          {
+          if (
+            skill.level.toLowerCase() !=
+            skillMap.get(skill.name).level.toLowerCase()
+          ) {
             const a = this._convertLevelToNumber(skill.level.toLowerCase());
-            const b = this._convertLevelToNumber(skillMap.get(skill.name).level.toLowerCase());
-            if(a > b) skillMap.get(skill.name).level = skill.level;
+            const b = this._convertLevelToNumber(
+              skillMap.get(skill.name).level.toLowerCase(),
+            );
+            if (a > b) skillMap.get(skill.name).level = skill.level;
           }
         }
         const skillData = skillMap.get(skill.name);
@@ -52,11 +56,13 @@ export class ProjectsDataStore {
     });
 
     this.skills = Array.from(skillMap.values());
-    this.skills.forEach(skill => {
-      skill.projects = skill.projects.toSorted((a, b) => new Date(b.date) - new Date(a.date));
+    this.skills.forEach((skill) => {
+      skill.projects = skill.projects.toSorted(
+        (a, b) => new Date(b.date) - new Date(a.date),
+      );
     });
     this._highlightTopSkills();
-  };
+  }
 
   _highlightTopSkills() {
     // Sort by count then by most recent project date
@@ -74,8 +80,8 @@ export class ProjectsDataStore {
   _calculateSkillLevel(skillName) {
     const skillProjects = this.projects.filter((project) =>
       project.skills.some(
-        (s) => s.name.toLowerCase() === skillName.toLowerCase()
-      )
+        (s) => s.name.toLowerCase() === skillName.toLowerCase(),
+      ),
     );
 
     // Calculate level based on:
@@ -87,10 +93,10 @@ export class ProjectsDataStore {
 
     skillProjects.forEach((project) => {
       const projectSkill = project.skills.find(
-        (s) => s.name.toLowerCase() === skillName.toLowerCase()
+        (s) => s.name.toLowerCase() === skillName.toLowerCase(),
       );
       const levelValue = this._convertLevelToNumber(
-        projectSkill.level.toLowerCase()
+        projectSkill.level.toLowerCase(),
       );
 
       // Weight by project importance
@@ -125,7 +131,7 @@ export class ProjectsDataStore {
     return [...this.projects]
       .sort(
         (a, b) =>
-          this._calculateNotabilityScore(b) - this._calculateNotabilityScore(a)
+          this._calculateNotabilityScore(b) - this._calculateNotabilityScore(a),
       )
       .slice(0, count);
   }
@@ -155,7 +161,10 @@ export class ProjectsDataStore {
       }
 
       // Add weighted skill level value
-      score += skillLevelWeights[this._calculateSkillLevel(fullSkill.name).toLowerCase()] || 0;
+      score +=
+        skillLevelWeights[
+          this._calculateSkillLevel(fullSkill.name).toLowerCase()
+        ] || 0;
     });
 
     // Add small recency factor (so newer projects with same score appear first)
