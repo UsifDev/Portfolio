@@ -207,6 +207,7 @@ export default {
   border: none;
   font-size: 0.9rem;
   transition: all 0.2s ease;
+  cursor: pointer;
 }
 
 .skill-badge:hover {
@@ -247,14 +248,5 @@ export default {
   100% {
     transform: rotate(30deg) translate(30%, 30%);
   }
-}
-
-.highlight-indicator {
-  margin-left: 0.3rem;
-  font-size: 0.8rem;
-}
-
-.cursor-pointer {
-  cursor: pointer;
 }
 </style>

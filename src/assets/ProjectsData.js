@@ -52,8 +52,11 @@ export class ProjectsDataStore {
     });
 
     this.skills = Array.from(skillMap.values());
+    this.skills.forEach(skill => {
+      skill.projects = skill.projects.toSorted((a, b) => new Date(b.date) - new Date(a.date));
+    });
     this._highlightTopSkills();
-  }
+  };
 
   _highlightTopSkills() {
     // Sort by count then by most recent project date

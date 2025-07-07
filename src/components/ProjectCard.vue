@@ -1,6 +1,6 @@
 <template>
   <div class="project-card">
-    <div
+    <div v-if="project.media"
       class="image-container"
       @mouseenter="showFullImage = true"
       @mouseleave="showFullImage = false"
@@ -17,6 +17,7 @@
 
     <div class="content-section">
       <h3 class="project-title">{{ project.title }}</h3>
+      <div class="accent-separator"></div>
       <p class="project-description">{{ project.description }}</p>
 
       <div
@@ -30,7 +31,9 @@
           </li>
         </ul>
       </div>
-      <button class="btn" @click="openProjectModal">View Details</button>
+      <div class="CTA">
+      <p class="btn" @click="openProjectModal">View Details</p>
+      </div>
     </div>
 
     <div class="skills-section">
@@ -98,9 +101,7 @@ export default {
 </script>
 
 <style scoped>
-.btn {
-  padding: 10px 14px;
-}
+
 .project-card {
   display: flex;
   max-width: 1200px;
@@ -130,6 +131,7 @@ export default {
   transition: all 0.3s ease;
   position: relative;
   z-index: 2;
+  cursor: pointer;
 }
 
 .project-image.full-image {
@@ -148,18 +150,11 @@ export default {
 
 .content-section {
   flex: 1;
-  padding: 2rem;
-  position: relative;
-}
-
-.content-section::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 2rem;
-  bottom: 2rem;
-  width: 1px;
-  background: var(--color-border);
+  padding: 3% 2rem; /* Vertical padding as percentage */
+  display: flex;
+  gap: 1vh;
+  flex-direction: column;
+  justify-content: space-between; /* Distributes space evenly */
 }
 
 .skills-section {
@@ -167,13 +162,13 @@ export default {
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 2.5vh;
 }
 
 .project-title {
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-  color: var(--color-heading);
+  font-size: 1.6rem;
+  text-align: center;
+  color: var(--accent-color);
 }
 
 .project-description {
@@ -183,7 +178,7 @@ export default {
 
 .lessons-section h4 {
   margin-bottom: 0.8rem;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
 }
 
 .lessons-list {
@@ -192,10 +187,24 @@ export default {
 
 .lessons-list li {
   margin-bottom: 0.5rem;
-  line-height: 1.4;
+  line-height: 2.4vh;
 }
 
-@media (max-width: 900px) {
+.CTA {
+  margin-top: auto; /* Pushes to bottom */
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  text-align: center;
+}
+
+.accent-separator {
+  height: 3px;
+  background: var(--accent-color);
+  margin: 0.3rem 17rem 0.3rem 17rem;
+  border-radius: 3px;
+}
+
+@media (max-width: 1200px) {
   .project-card {
     flex-direction: column;
   }

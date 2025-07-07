@@ -3,11 +3,11 @@ export const projectsData = [
     id: 1,
     title: "Space Forces",
     description:
-      "An android 2D strategy game made in GlistEngine where you deploy ships to destroy and reach the opponent's base similar to Clash Royale. The game has multiple ship types, upgrades and power-ups.",
+      "An android 2D strategy game made in GlistEngine for GameLab, where you deploy ships to destroy and reach the opponent's base similar to Clash Royale. The game has multiple ship types, upgrades and power-ups.",
     date: "2024-09-01",
     highlighted: true,
     lessons: [
-      "how to organize features into smaller manageable tasks to account for project deadline.",
+      "How to organize features into smaller manageable tasks to account for project deadline.",
       "Separated game logic into reusable functions / sub-routines for convenience and debugging.",
       "Leveraged structs to contain and mutate closely-tied data including sprites.",
     ],
@@ -22,16 +22,32 @@ export const projectsData = [
     ],
     media: [
       {
-        url: "src/assets/image.png",
-        caption: "",
+        url: "src/assets/projects/space_forces/1.jpg",
+        caption: "Main Menu",
       },
       {
-        url: "src/assets/image.png",
-        caption: "says something",
+        url: "src/assets/projects/space_forces/2.jpg",
+        caption: "Ship Selection",
       },
-            {
-        url: "src/assets/image.png",
-        caption: "",
+      {
+        url: "src/assets/projects/space_forces/3.jpg",
+        caption: "Upgrades Shop Screen",
+      },
+      {
+        url: "src/assets/projects/space_forces/4.jpg",
+        caption: "Gameplay",
+      },
+      {
+        url: "src/assets/projects/space_forces/5.jpg",
+        caption: "Combo",
+      },
+      {
+        url: "src/assets/projects/space_forces/6.jpg",
+        caption: "Gameplay",
+      },
+      {
+        url: "src/assets/projects/space_forces/7.jpg",
+        caption: "Game Result",
       },
     ],
   },
@@ -47,7 +63,7 @@ export const projectsData = [
       "Leveraged strategy design pattern for physics-based animation handling and swapping.",
       "Utilized singleton patterns for settings, spawning and general game management."
     ],
-    challenge: "Having built the game before using an asynchronous technique, I wanted to build it again without any fancy techniques for the course submission. So, I reused some code and implemented similar game state management to Space Forces which allowed me to finish the project within one week.",
+    challenge: "Having built the game before using an asynchronous technique, I wanted to build it again without that technique for the course submission and that meant i needed a much more meticuluos state handling approach to ensure proper animation handling. So, I reused some code and implemented similar game state management to Space Forces which allowed me to finish the project within one week.",
     skills: [
       { name: "C#", level: "advanced" },
       { name: "Asynchronous Programming", level: "intermediate" },
@@ -57,15 +73,28 @@ export const projectsData = [
       { name: "Optimization", level: "beginner" },
       { name: "Software Design", level: "intermediate" },
       { name: "Project Management", level: "beginner" },
+      { name: "Visual Design", level: "beginner" },
     ],
     media: [
       {
-        url: "src/assets/image.png",
-        caption: "",
+        url: "src/assets/projects/shape_match/1.png",
+        caption: "Main Menu",
       },
       {
-        url: "src/assets/image.png",
-        caption: "says something",
+        url: "src/assets/projects/shape_match/2.png",
+        caption: "Gameplay",
+      },
+      {
+        url: "src/assets/projects/shape_match/3.png",
+        caption: "Randomization Example",
+      },
+      {
+        url: "src/assets/projects/shape_match/4.png",
+        caption: "Particle Effects",
+      },
+      {
+        url: "src/assets/projects/shape_match/5.gif",
+        caption: "Asyncronous Technique",
       },
     ],
   },
@@ -82,7 +111,7 @@ export const projectsData = [
       "Implemented the database with Room for convenience and SQL query verification.",
       "Applied advanced Kotlin programming features such as coroutines (for db transactions), scope functions and collection iterators (for cleaner consise code).",
     ],
-      challenge: "Being under a short time and having no prior experience in Kotlin nor Android development, this project was the most challenging. I followed a strict workflow, outlining tasks required as i go and iterating when necessary, achieveing a good quality result in respect to the constraints and learning A LOT about android development through the official documentation.",
+      challenge: "Being under a short time and having no prior experience in Kotlin nor Android development, this project was the most challenging. I followed a strict workflow, outlining the tasks required as i go and iterating when necessary, achieveing a good quality result in respect to the constraints and learning A LOT about android development in the process.",
     skills: [
       { name: "Kotlin", level: "advanced" },
       { name: "Software Design", level: "advanced" },
@@ -99,12 +128,32 @@ export const projectsData = [
     ],
     media: [
       {
-        url: "src/assets/image.png",
-        caption: "",
+        url: "src/assets/projects/GITH/1.jpg",
+        caption: "Habits List",
       },
       {
-        url: "src/assets/image.png",
-        caption: "says something",
+        url: "src/assets/projects/GITH/2.jpg",
+        caption: "Habit Editor",
+      },
+      {
+        url: "src/assets/projects/GITH/3.jpg",
+        caption: "Routines List",
+      },
+      {
+        url: "src/assets/projects/GITH/4.jpg",
+        caption: "Routine Editor",
+      },
+      {
+        url: "src/assets/projects/GITH/5.jpg",
+        caption: "Categories List",
+      },
+      {
+        url: "src/assets/projects/GITH/6.jpg",
+        caption: "Category Editor",
+      },
+      {
+        url: "src/assets/projects/GITH/7.png",
+        caption: "Domain Model",
       },
     ],
   },
@@ -128,12 +177,16 @@ export const projectsData = [
     ],
     media: [
       {
-        url: "src/assets/image.png",
-        caption: "",
+        url: "src/assets/projects/foodie_app/1.jpg",
+        caption: "Home Screen",
+      },
+      { 
+        url: "src/assets/projects/foodie_app/2.jpg",
+        caption: "Search Screen",
       },
       {
-        url: "src/assets/image.png",
-        caption: "says something",
+        url: "src/assets/projects/foodie_app/3.jpg",
+        caption: "Yelp Link",
       },
     ],
   },
@@ -142,7 +195,6 @@ export const projectsData = [
     title: "This portfolio 😄",
     description: "Built using Vue.",
     date: "2025-07-01",
-    highlighted: true,
     lessons: [
       "Learned about static webpage hosting with GitHub.",
       "Built and Deployed using Vite.",
@@ -151,16 +203,7 @@ export const projectsData = [
       { name: "JavaScript", level: "intermediate" },
       { name: "Vue", level: "beginner" },
       { name: "Composables", level: "intermediate" },
-    ],
-    media: [
-      {
-        url: "src/assets/image.png",
-        caption: "",
-      },
-      {
-        url: "src/assets/image.png",
-        caption: "says something",
-      },
+      { name: "Visual Design", level: "beginner" },
     ],
   },
     {
@@ -180,13 +223,30 @@ export const projectsData = [
     ],
     media: [
       {
-        url: "src/assets/image.png",
-        caption: "",
+        url: "src/assets/projects/image_proc/1.png",
+        caption: "LBP enhancement",
       },
       {
-        url: "src/assets/image.png",
-        caption: "says something",
+        url: "src/assets/projects/image_proc/2.png",
+        caption: "Fingerprint Image Processing",
       },
+    ],
+  },
+    {
+    id: 7,
+    title: "SMS Spam Classification",
+    description: "A text classifier that flags spam messages.",
+    date: "2023-03-01",
+    lessons: [
+      "Learned about vectorization and tokenization.",
+      "How to build machine learning models.",
+      "Data organizing and processing.",
+    ],
+    skills: [
+      { name: "Artificial Intelligence", level: "intermediate" },
+      { name: "Feature extraction", level: "intermediate" },
+      { name: "Procedural Programming", level: "intermediate" },
+      { name: "Python", level: "intermediate" },
     ],
   },
 ];
@@ -225,8 +285,8 @@ export const homeData = {
 export const aboutData = {
   image: new img("src/assets/dev icon.png", "Developer Icon"),
   description: [
-    "I am a Software Engineering graduate, strongly interested in <strong>video game development</strong>. Being a gamer myself and somewhat of a perfectionist, I have a unique insight and experience in the industry. In particular, <strong>I can identify key interactive experience elements</strong> and ways to improve the <strong>quality</strong> of the frontend of applications and video games.",
-    "I like learning new things, optimizing stuff and developing software to solve various types of problems. I am <strong>open to</strong> applying my skills in <strong>other software fields</strong> too.",
+    "I am a Software Engineering graduate, strongly interested in <strong>video game development</strong>. Being a gamer and somewhat of a perfectionist, I have a unique insight and experience in the industry that enables me to swiftly <strong>identify key interactive experience elements</strong> and come up with ways to improve the <strong>user experience</strong> and/or feel of applications and video games.",
+    "I like learning new things, optimizing stuff and developing software to solve various types of problems. Most of my skills are transferable and I am <strong>open to</strong> applying them in <strong>other software fields</strong> too.",
   ]
 };
 

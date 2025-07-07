@@ -120,6 +120,8 @@ section {
   color: var(--text-color);
   border: 1px solid var(--main-color);
   transition: all 0.4s ease;
+  cursor: pointer;
+  text-align: center;
 }
 
 .btn:hover {
