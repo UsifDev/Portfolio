@@ -16,7 +16,7 @@
 
 <script>
 import DevNameComp from "@/components/DevName.vue";
-import { homeData } from "@/assets/data.js";
+import { homeData } from "@/media/data.js";
 
 export default {
   data() {

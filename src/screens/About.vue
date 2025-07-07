@@ -42,7 +42,7 @@ const openProjectModal = (project) => {
 </script>
 
 <script>
-import { aboutData } from "@/assets/data.js";
+import { aboutData } from "@/media/data.js";
 import SkillBadgeComp from "@/components/SkillBadge.vue";
 export default {
   data() {
