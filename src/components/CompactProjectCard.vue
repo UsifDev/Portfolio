@@ -148,7 +148,6 @@ export default {
 }
 
 .card-title {
-  font-size: 1.1rem;
   margin-bottom: 0.8rem;
   text-align: left;
   color: var(--color-heading);
@@ -157,8 +156,6 @@ export default {
 
 .card-description {
   flex: 1;
-  font-size: 0.9rem;
-  line-height: 1.4;
   margin-bottom: 0.8rem;
   text-align: left;
   color: var(--color-text);
@@ -221,5 +218,13 @@ export default {
 .slide-up-leave-from {
   transform: translateY(0);
   opacity: 1;
+}
+
+@media screen and (orientation: landscape), (min-width: 900px) {
+  .card-title,
+  .card-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
 }
 </style>

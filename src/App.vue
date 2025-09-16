@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch, onMounted, onUnmounted } from "vue";
 import { useProjectsData } from "@/composables/useProjectsData";
 
 const { getProject } = useProjectsData();
@@ -31,6 +31,38 @@ const openProjectModal = (project) => {
   initialObject.value = getProject(project.id);
   showModal.value = true;
 };
+
+// Prevent background scroll when modal is open
+watch(showModal, (val) => {
+  if (val) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "";
+  }
+});
+// Handle browser back button to close modal
+onMounted(() => {
+  const handlePopState = () => {
+    if (showModal.value) {
+      showModal.value = false;
+      history.pushState(null, "", location.href);
+    }
+  };
+  window.addEventListener("popstate", handlePopState);
+  // When modal opens, push a new state
+  watch(showModal, (val) => {
+    if (val) {
+      history.pushState(null, "", location.href);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  });
+  // Clean up
+  onUnmounted(() => {
+    window.removeEventListener("popstate", handlePopState);
+  });
+});
 </script>
 
 <script>
@@ -77,7 +109,6 @@ export default {
   --other-color: #12141c;
   --h1-font: 5.2rem;
   --h2-font: 3.5rem;
-  --p-font: 1.1rem;
   --gap: 20px;
   --badge-size: 120px;
 
@@ -96,6 +127,76 @@ export default {
   --color-text: #2c3e50;
   --color-text-mute: #7f7f7f;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+html {
+  font-size: 18px;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-weight: false;
+  line-height: 1.65;
+}
+
+p {
+  font-size: 1em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: true;
+  line-height: 1.15;
+}
+
+h1,
+.text-size-h1 {
+  font-family: "Mada", sans-serif;
+  font-weight: 400;
+  margin-top: 0;
+  font-size: 5.65em;
+}
+
+h2,
+.text-size-h2 {
+  font-size: 4em;
+}
+
+h3,
+.text-size-h3 {
+  font-size: 2.83em;
+}
+
+h4,
+.text-size-h4 {
+  font-size: 2em;
+}
+
+h5,
+.text-size-h5 {
+  font-size: 1.41em;
+}
+
+.text-caption {
+  font-size: 0.71em;
+}
+
+small,
+.text-small {
+  font-size: 0.5em;
+}
+
+#app {
+  color: var(--text-color, #222);
+}
+
 .portfolio-app {
   width: 99.5%;
   padding-left: 0.5%;
@@ -114,7 +215,6 @@ section {
   display: inline-block;
   padding: 14px 40px;
   border-radius: 0.5rem;
-  font-size: 17px;
   font-weight: 500;
   background: var(--color-highlight1);
   color: var(--text-color);
@@ -167,7 +267,17 @@ section {
     padding: 8px 3%;
   }
   section {
-    padding: 130px 3% 60px;
+    padding: 0 0 60px 0;
+    width: 100vw;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 600px) {
+  section {
+    padding: 0 0 60px 0;
+    width: 100vw;
+    box-sizing: border-box;
   }
 }
 
@@ -208,6 +318,18 @@ section {
   :root {
     --h1-font: 3.7rem;
     --h2-font: 2.7rem;
+  }
+}
+
+@media screen and (orientation: landscape) and (max-width: 900px) {
+  html {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 600px) and (orientation: portrait) {
+  html {
+    font-size: 12px;
   }
 }
 </style>

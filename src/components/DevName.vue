@@ -10,6 +10,7 @@ export default {
 
 <style scoped>
 span {
+  font-size: 1em;
   color: var(--main-color);
 }
 </style>

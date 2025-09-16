@@ -33,16 +33,15 @@ export default {
 
 <style scoped>
 .home {
-  height: 90vh;
+  min-height: 90vh;
   width: 100%;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-}
-
-span {
-  color: var(--main-color);
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  box-sizing: border-box;
 }
 
 .back-video {
@@ -52,32 +51,31 @@ span {
   z-index: -1;
 }
 
-.home-name {
-  flex-direction: row;
-}
-
 .home-text {
   margin-left: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  z-index: 1;
 }
 
 .home-text h1 {
   margin: 15px 0;
-  font-size: var(--h1-font);
   font-weight: bold;
-  line-height: 1.1;
   letter-spacing: 2px;
 }
 
 .home-text h4 {
   color: var(--main-color);
-  font-size: 24px;
   font-weight: 600;
+  font-size: 1.8em;
 }
 
 .home-text h3 {
-  font-size: 24px;
   font-weight: 600;
   margin-bottom: 3rem;
+  font-size: 2.3em;
 }
 
 @media (min-aspect-ratio: 16/10) {
@@ -87,7 +85,21 @@ span {
   }
 }
 
-@media (max-aspect-ratio: 16/10) {
+@media (max-width: 600px) and (orientation: portrait) {
+  .home {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+    min-height: 70vh;
+  }
+  .home-text {
+    margin-left: 0;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    gap: 1rem;
+  }
   .back-video {
     width: auto;
     height: 100%;

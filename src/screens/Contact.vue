@@ -1,4 +1,76 @@
 <template>
+  <section class="portrait-contact" id="p_contact">
+    <section class="contact" id="p_contact">
+      <div class="certifcates-container">
+        <h2 class="heading">Certifications</h2>
+        <div class="contact-badges">
+          <div class="badges-frame">
+            <br />
+            <div
+              :data-iframe-width="200"
+              :data-iframe-height="250"
+              :data-share-badge-id="'3708ea5f-914b-42fc-8156-8514fe75ebe2'"
+              data-share-badge-host="https://www.credly.com"
+            ></div>
+          </div>
+
+          <div
+            class="badges-container"
+            :class="`badges-count-${badgesData.length}`"
+          >
+            <a
+              v-for="(badge, index) in badgesData"
+              :key="index"
+              :href="badge.link"
+              target="_blank"
+              class="badge"
+              :title="badge.title || 'View certification'"
+            >
+              <img :src="badge.image.path" :alt="badge.image.alt" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="contact-text">
+        <h2>Contact</h2>
+        <h4>Let's Work Together</h4>
+        <div class="languages">
+          <p>Languages: <strong>English | Arabic</strong> (mother tongue)</p>
+        </div>
+        <div class="contact-list">
+          <li>
+            <a href="https://maps.app.goo.gl/iLmijXHN27AoXfgK6"
+              ><i class="bx bxs-map-pin"></i> : {{ contactData.address }}</a
+            >
+          </li>
+          <li>
+            <a :href="`mailto:` + contactData.email"
+              ><i class="bx bxl-gmail"></i> : {{ contactData.email }}</a
+            >
+          </li>
+          <li>
+            <a href="https://wa.me/905388540195"
+              ><i class="bx bxs-phone"></i> : {{ contactData.phone }}</a
+            >
+          </li>
+          <br />
+          <a :href="`mailto:` + contactData.email">
+            <button class="btn">Let's connect</button>
+          </a>
+        </div>
+        <div class="contact-icons">
+          <template
+            v-for="social in contactData.socialLinks"
+            :key="social.icon"
+          >
+            <a :href="social.link" target="_blank"
+              ><i :class="social.icon"></i
+            ></a>
+          </template>
+        </div>
+      </div>
+    </section>
+  </section>
   <section class="contact" id="contact">
     <div class="contact-text">
       <h2>Contact</h2>
@@ -83,7 +155,7 @@ export default {
       // Check if script is already loaded
       if (
         document.querySelector(
-          'script[src="//cdn.credly.com/assets/utilities/embed.js"]',
+          'script[src="//cdn.credly.com/assets/utilities/embed.js"]'
         )
       ) {
         return;
@@ -101,12 +173,17 @@ export default {
 </script>
 
 <style scoped>
+.portrait-contact {
+  display: none;
+}
+
 .contact-badges {
   position: relative;
   display: flex;
   gap: var(--gap);
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
+  min-height: 180px;
 }
 
 .badges-frame {
@@ -115,6 +192,10 @@ export default {
   background: white;
   z-index: 1;
   padding: 12px var(--gap) 12px var(--gap);
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .badges-container {
@@ -127,6 +208,10 @@ export default {
   padding: var(--gap);
   border-radius: 0 30px 30px 0px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Responsive layouts */
@@ -206,24 +291,6 @@ export default {
   padding-bottom: 90px;
 }
 
-.contact-text h4 {
-  margin: 15px 0;
-  color: var(--main-color);
-  font-size: 20px;
-  font-weight: 600;
-}
-
-.contact-text h2 {
-  font-size: var(--h2-font);
-}
-
-.contact-text p {
-  color: var(--second-color);
-  font-size: var(--p-font);
-  line-height: 30px;
-  margin-bottom: 2rem;
-}
-
 .contact-list {
   margin-bottom: 3rem;
 }
@@ -243,6 +310,24 @@ export default {
   font-size: var(--p-font);
   font-weight: 700;
   transition: all 0.4s ease;
+}
+
+.contact-text h4 {
+  margin: 15px 0;
+  color: var(--main-color);
+  font-size: 1.2rem;
+  line-height: 1.3;
+  font-weight: 600;
+}
+.contact-text h2 {
+  font-size: 2rem;
+  line-height: 1.2;
+}
+.contact-text p {
+  color: var(--second-color);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
 }
 
 .contact-list li a:hover {
@@ -300,5 +385,73 @@ export default {
 .certifcates-container {
   transform: translateX(-8%);
   transform: translateY(-8%);
+}
+
+@media (max-width: 600px) and (orientation: portrait) {
+  .portrait-contact {
+    display: contents;
+  }
+
+  #contact {
+    display: none;
+  }
+
+  .contact {
+    background: var(--bg-color);
+    display: list-item;
+    align-items: center;
+    gap: 3rem;
+    padding-top: 0px;
+    padding-bottom: 50px;
+  }
+
+  .contact-text {
+    padding-top: 50px;
+  }
+
+  .certifcates-container {
+    box-sizing: border-box;
+    padding: 0 0.5rem;
+    margin: 0 auto;
+    transform: none;
+  }
+
+  .badges-frame {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .badges-container {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background: var(--main-color);
+    padding: 0.5rem;
+    border-radius: 8px;
+    box-sizing: border-box;
+    max-width: 100vw;
+  }
+
+  .badge {
+    width: 80px;
+    height: 90px;
+    padding: 6px;
+    margin: 0 auto;
+  }
+
+  .badge img {
+    max-width: 70px;
+    max-height: 70px;
+  }
+}
+
+@media screen and (orientation: landscape), (min-width: 900px) {
+  .contact-text h2,
+  .contact-text h4,
+  .contact-text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
 }
 </style>

@@ -5,10 +5,6 @@
     </div>
     <div class="about-text">
       <h2>About me</h2>
-      <br />
-      <div class="accent-about-text"></div>
-      <br />
-      <br />
       <div
         class="about-text"
         v-for="(desc, i) in aboutData.description"
@@ -78,28 +74,29 @@ export default {
   max-width: 360px;
 }
 
-.accent-about-text {
-  background-color: var(--main-color);
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
 .about-text h2 {
-  font-size: var(--h2-font);
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: white;
+  position: relative;
+  padding-bottom: 1rem;
 }
 
-.about-text h4 {
-  margin: 10px 0;
-  color: var(--main-color);
-  font-size: 20px;
-  font-weight: 600;
+.about-text h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 3px;
+  background: var(--accent-color);
 }
 
 .about-text p {
+  text-align: center;
   color: var(--second-color);
-  font-size: var(--p-font);
-  line-height: 30px;
-  margin-bottom: 2rem;
+  margin: 0rem 2rem 2rem 2rem;
 }
 
 .about-gri {
@@ -110,5 +107,43 @@ export default {
   justify-content: center;
   justify-items: center;
   gap: 1rem;
+}
+
+@media (max-width: 600px) and (orientation: portrait) {
+  .about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem 0 2rem 0;
+    width: 100vw;
+    box-sizing: border-box;
+  }
+  .about-img {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .about-img img {
+    min-width: 80px;
+    max-width: 250px;
+    border-radius: 50%;
+    padding: 8px;
+    margin-bottom: 0.5rem;
+  }
+  .about-text {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .about-text h2 {
+    margin-top: 0.5rem;
+    text-align: center;
+  }
 }
 </style>

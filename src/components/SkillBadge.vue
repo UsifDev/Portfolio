@@ -88,14 +88,14 @@ const formattedLevel = computed(() => {
 const sortedProjects = computed(() => {
   if (!skillData.value?.projects) return [];
   return [...skillData.value.projects].sort(
-    (a, b) => new Date(b.date) - new Date(a.date),
+    (a, b) => new Date(b.date) - new Date(a.date)
   );
 });
 
 const primaryProject = computed(() => {
   return (
     sortedProjects.value.find(
-      (project) => getProject(project.id)?.highlighted,
+      (project) => getProject(project.id)?.highlighted
     ) || sortedProjects.value[0]
   );
 });
@@ -155,7 +155,6 @@ export default {
 .project-item {
   padding: 0.3rem 0;
   border-bottom: 1px solid var(--color-border-mute);
-  font-size: 0.9rem;
 }
 
 .project-item:last-child {
@@ -169,6 +168,8 @@ export default {
   font-weight: 600;
   cursor: pointer;
   border-top: 1px solid var(--color-border);
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .primary-project:hover {
@@ -182,11 +183,20 @@ export default {
 .projects-list::-webkit-scrollbar-track {
   background: var(--color-background-mute);
 }
+@media screen and (orientation: landscape), (min-width: 900px) {
+  .project-item,
+  .primary-project,
+  .skill-badge {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+}
 
 .projects-list::-webkit-scrollbar-thumb {
   background: var(--accent-color);
   border-radius: 3px;
 }
+
 .skill-badge-container {
   position: relative;
   display: inline-block;
@@ -202,7 +212,8 @@ export default {
   background-color: var(--color-background-mute);
   color: var(--color-text);
   border: none;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  line-height: 1.6;
   transition: all 0.2s ease;
   cursor: pointer;
 }

@@ -166,19 +166,16 @@ export default {
 }
 
 .project-title {
-  font-size: 1.6rem;
   text-align: center;
   color: var(--accent-color);
 }
 
 .project-description {
   margin-bottom: 1.5rem;
-  line-height: 1.5;
 }
 
 .lessons-section h4 {
   margin-bottom: 0.8rem;
-  font-size: 1.3rem;
 }
 
 .lessons-list {
@@ -187,7 +184,6 @@ export default {
 
 .lessons-list li {
   margin-bottom: 0.5rem;
-  line-height: 2.4vh;
 }
 
 .CTA {
@@ -218,6 +214,15 @@ export default {
     flex-wrap: wrap;
     border-left: none;
     border-top: 1px solid var(--color-border);
+  }
+}
+
+@media screen and (orientation: landscape), (min-width: 900px) {
+  .project-title,
+  .project-description,
+  .lessons-list li {
+    font-size: 1.1rem;
+    line-height: 1.7;
   }
 }
 </style>

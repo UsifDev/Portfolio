@@ -5,7 +5,7 @@
 
       <h2 class="project-title" :class="{ highlighted: project.highlighted }">
         {{ project.title }}
-        <span v-if="project.highlighted" class="highlight-badge">Featured</span>
+        <span v-if="showHighlightBadge" class="highlight-badge">Featured</span>
       </h2>
 
       <div class="accent-separator"></div>
@@ -45,7 +45,7 @@
 
       <div class="challenges-section" v-if="project.challenge">
         <h3>Challenges Overcome</h3>
-        {{ project.challenge }}
+        <p>{{ project.challenge }}</p>
       </div>
 
       <div class="accent-separator"></div>
@@ -76,7 +76,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useProjectsData } from "@/composables/useProjectsData";
 const { getSkill, getProject } = useProjectsData();
 
@@ -90,6 +90,10 @@ const props = defineProps({
 const emit = defineEmits(["close"]);
 
 const project = ref(props.initialProject);
+// Only show badge if title is short
+const showHighlightBadge = computed(() => {
+  return project.value.highlighted && (project.value.title?.length ?? 0) <= 32;
+});
 
 const onProjectChanged = (newProject) => {
   project.value = getProject(newProject.id);
@@ -136,13 +140,13 @@ export default {
   background: white;
   color: var(--color-text);
   border-radius: 8px;
-  padding: 2rem;
-  max-width: 800px; /* A4 width is 794px */
+  padding: 2.5rem 2rem;
+  max-width: 1200px;
+  width: 100%;
   max-height: 90vh;
   overflow: visible;
   overflow-y: auto;
   overflow-x: visible;
-  width: 100%;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   margin-bottom: 50px;
 }
@@ -153,13 +157,11 @@ export default {
   right: 1rem;
   background: none;
   border: none;
-  font-size: 1.5rem;
   cursor: pointer;
   color: var(--color-text);
 }
 
 .project-title {
-  font-size: 1.8rem;
   margin-bottom: 1rem;
   color: var(--color-heading);
   position: relative;
@@ -172,13 +174,12 @@ export default {
 
 .highlight-badge {
   position: absolute;
-  top: -0.5rem;
-  right: 0;
+  top: 0.1rem;
+  right: 1rem;
   background: var(--accent-color);
   color: white;
   padding: 0.2rem 0.8rem;
   border-radius: 1rem;
-  font-size: 0.8rem;
   font-weight: bold;
 }
 
@@ -192,22 +193,22 @@ export default {
 .media-section {
   margin: 0.5rem 0;
   width: 100%;
-  overflow-x: auto; /* Allows horizontal scrolling if needed */
+  overflow-x: auto;
 }
 
 .media-container {
   display: flex;
   gap: 1rem;
-  padding-bottom: 1.5rem; /* Add some vertical padding */
+  padding-bottom: 1.5rem;
   margin-top: 1rem;
-  width: max-content; /* Let container expand horizontally */
-  min-width: 100%; /* Ensure it fills parent width */
+  width: max-content;
+  min-width: 100%;
 }
 
 .media-item {
-  width: 200px; /* Fixed width for consistent items */
+  width: 200px;
   height: 150px;
-  min-width: 200px; /* Prevent shrinking */
+  min-width: 200px;
   object-fit: cover;
   border-radius: 4px;
   cursor: pointer;
@@ -222,7 +223,6 @@ export default {
   border-color: var(--accent-color);
 }
 
-/* Optional: Style scrollbar for horizontal scrolling */
 .media-section::-webkit-scrollbar {
   height: 7px;
 }
@@ -245,7 +245,6 @@ export default {
 }
 
 h3 {
-  font-size: 1.3rem;
   margin-bottom: 0.8rem;
   color: var(--color-heading);
 }
@@ -256,7 +255,6 @@ ul {
 
 li {
   margin-bottom: 0.5rem;
-  line-height: 1.5;
 }
 
 .skills-grid {
@@ -264,6 +262,36 @@ li {
   flex-wrap: wrap;
   gap: 0.8rem;
   margin-top: 1rem;
+}
+
+@media screen and (orientation: landscape), (min-width: 900px) {
+  .project-title,
+  h3,
+  li {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+}
+
+@media screen and (orientation: landscape) {
+  .modal-overlay {
+    align-items: flex-start;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+  }
+  .project-modal {
+    align-self: center;
+    max-width: 1800px;
+    max-height: 80vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    padding: 2rem 1.5rem;
+    box-sizing: border-box;
+  }
+  .project-title {
+    font-size: 1.5rem;
+    padding-top: 0.5rem;
+  }
 }
 
 @media (max-width: 600px) {
