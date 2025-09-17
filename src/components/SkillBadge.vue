@@ -212,7 +212,6 @@ export default {
   background-color: var(--color-background-mute);
   color: var(--color-text);
   border: none;
-  font-size: 1rem;
   line-height: 1.6;
   transition: all 0.2s ease;
   cursor: pointer;

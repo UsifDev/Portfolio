@@ -141,9 +141,10 @@ body {
   font-weight: false;
   line-height: 1.65;
 }
-
+li,
 p {
-  font-size: 1em;
+  font-size: 1.3em;
+  font-weight: 400;
 }
 
 h1,
@@ -222,6 +223,7 @@ section {
   transition: all 0.4s ease;
   cursor: pointer;
   text-align: center;
+  font-size: 1.3em;
 }
 
 .btn:hover {
@@ -325,11 +327,18 @@ section {
   html {
     font-size: 9px;
   }
+  .btn {
+    padding: 10px 20px;
+  }
 }
 
 @media (max-width: 600px) and (orientation: portrait) {
   html {
     font-size: 12px;
+  }
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.9em;
   }
 }
 </style>

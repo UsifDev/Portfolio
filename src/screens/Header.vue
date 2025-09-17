@@ -55,8 +55,8 @@ header {
   background: transparent;
   border-bottom: 1px solid transparent;
   transition: all 0.4s ease;
-  font-size: 1.5em;
-  padding: 10px 16%;
+  font-size: 1.3em;
+  padding: 10px 10%;
 }
 
 header.sticky {
@@ -71,9 +71,12 @@ header.sticky {
   color: var(--text-color);
   font-size: 2em;
 }
+
 .btn {
+  font-size: 1em;
   margin-right: 50px;
 }
+
 .navbar {
   display: flex;
 }
@@ -105,6 +108,7 @@ header.sticky {
   height: 100%;
   position: relative;
 }
+
 .menu-icon-wrapper.inactive {
   position: absolute;
   left: 50%;
@@ -113,7 +117,7 @@ header.sticky {
   height: auto;
 }
 
-@media screen and (orientation: landscape), (max-width: 900px) {
+@media screen and (orientation: landscape) and (max-width: 900px) {
   header {
     padding: 8px 4%;
     min-height: 48px;
@@ -124,12 +128,33 @@ header.sticky {
 
   .btn {
     padding: 10px 20px;
+    margin-right: 50px;
+  }
+
+  #menu-icon {
+    font-size: 18px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  header.sticky {
+    padding: 10px 10%;
   }
 }
 
 @media (max-width: 600px) and (orientation: portrait) {
   #menu-icon {
     display: none;
+  }
+  header {
+    font-size: 1em;
+    padding: 9px 6%;
+  }
+  .btn {
+    margin-right: 0px;
+  }
+  header.sticky {
+    padding: 10px 10%;
   }
 }
 </style>

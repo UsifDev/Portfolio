@@ -150,11 +150,10 @@ export default {
 
 .content-section {
   flex: 1;
-  padding: 3% 2rem; /* Vertical padding as percentage */
+  padding: 3% 2rem;
   display: flex;
   gap: 1vh;
   flex-direction: column;
-  justify-content: space-between; /* Distributes space evenly */
 }
 
 .skills-section {
@@ -196,17 +195,13 @@ export default {
 .accent-separator {
   height: 3px;
   background: var(--accent-color);
-  margin: 0.3rem 17rem 0.3rem 17rem;
-  border-radius: 3px;
+  margin: 0.3rem 17rem;
+  border-radius: 5px;
 }
 
 @media (max-width: 1200px) {
   .project-card {
     flex-direction: column;
-  }
-
-  .image-container {
-    flex: 0 0 200px;
   }
 
   .skills-section {
@@ -217,12 +212,9 @@ export default {
   }
 }
 
-@media screen and (orientation: landscape), (min-width: 900px) {
-  .project-title,
-  .project-description,
-  .lessons-list li {
-    font-size: 1.1rem;
-    line-height: 1.7;
+@media screen and (orientation: landscape) and (min-width: 900px) {
+  .skills-section {
+    gap: 1vh;
   }
 }
 </style>

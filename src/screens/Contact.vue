@@ -180,38 +180,46 @@ export default {
 .contact-badges {
   position: relative;
   display: flex;
-  gap: var(--gap);
-  justify-content: center;
+  flex-direction: row;
   align-items: stretch;
   min-height: 180px;
+  height: 100%;
+  width: 100%;
 }
 
 .badges-frame {
+  flex: 2 1 0;
   border-radius: 30px 0 0 30px;
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
   background: white;
   z-index: 1;
-  padding: 12px var(--gap) 12px var(--gap);
+  padding: 12px 32px 12px 32px;
   min-height: 180px;
+  min-width: 260px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .badges-container {
+  flex: 1 1 0;
   position: relative;
   z-index: 2;
-  display: grid;
-  gap: var(--gap);
-  max-width: var(--gap) * 3 + var(--badge-size);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
   background: var(--main-color);
-  padding: var(--gap);
+  padding: 24px 16px;
   border-radius: 0 30px 30px 0px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
   min-height: 180px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  min-width: 120px;
+  max-width: 320px;
+  box-sizing: border-box;
 }
 
 /* Responsive layouts */
@@ -240,13 +248,14 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 120px;
-  height: 120px;
+  width: 90px;
+  height: 90px;
   background: white;
   border-radius: 8px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   overflow: hidden;
+  margin: 0 4px;
 }
 
 .badge:hover {
@@ -285,10 +294,10 @@ export default {
   background: var(--bg-color);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  align-items: center;
+  align-items: start;
   gap: 3rem;
   padding-top: 70px;
-  padding-bottom: 90px;
+  padding-bottom: 70px;
 }
 
 .contact-list {
@@ -307,7 +316,6 @@ export default {
 .contact-list li a {
   display: block;
   color: var(--second-color);
-  font-size: var(--p-font);
   font-weight: 700;
   transition: all 0.4s ease;
 }
@@ -315,18 +323,10 @@ export default {
 .contact-text h4 {
   margin: 15px 0;
   color: var(--main-color);
-  font-size: 1.2rem;
-  line-height: 1.3;
-  font-weight: 600;
 }
-.contact-text h2 {
-  font-size: 2rem;
-  line-height: 1.2;
-}
+
 .contact-text p {
   color: var(--second-color);
-  font-size: 1rem;
-  line-height: 1.6;
   margin-bottom: 2rem;
 }
 
@@ -365,7 +365,6 @@ export default {
 
   text-align: center;
   margin-bottom: 2.5rem;
-  font-size: 2rem;
   color: white;
   position: relative;
   padding-bottom: 1rem;
@@ -383,8 +382,9 @@ export default {
 }
 
 .certifcates-container {
-  transform: translateX(-8%);
-  transform: translateY(-8%);
+  width: 90%;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 @media (max-width: 600px) and (orientation: portrait) {
@@ -401,7 +401,7 @@ export default {
     display: list-item;
     align-items: center;
     gap: 3rem;
-    padding-top: 0px;
+    padding-top: 40px;
     padding-bottom: 50px;
   }
 
@@ -413,12 +413,15 @@ export default {
     box-sizing: border-box;
     padding: 0 0.5rem;
     margin: 0 auto;
+    width: 100%;
+    max-width: none;
     transform: none;
   }
 
   .badges-frame {
     padding-left: 15px;
     padding-right: 15px;
+    min-width: unset;
   }
 
   .badges-container {
@@ -431,6 +434,7 @@ export default {
     border-radius: 8px;
     box-sizing: border-box;
     max-width: 100vw;
+    min-width: unset;
   }
 
   .badge {
@@ -446,12 +450,39 @@ export default {
   }
 }
 
-@media screen and (orientation: landscape), (min-width: 900px) {
-  .contact-text h2,
-  .contact-text h4,
-  .contact-text p {
-    font-size: 1.1rem;
-    line-height: 1.7;
+@media screen and (orientation: landscape) and (max-width: 900px) {
+  .certifcates-container {
+    box-sizing: border-box;
+    padding: 0.5rem;
+    margin: 0 auto;
+    max-height: 60vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    transform: none;
+  }
+  .contact-badges {
+    max-height: 50vh;
+    transform: none;
+    width: 100%;
+    gap: 1rem;
+  }
+  .badges-frame,
+  .badges-container {
+    min-height: 80px;
+    padding: 1rem;
+    gap: 0.5rem;
+  }
+  .badge {
+    width: 60px;
+    height: 60px;
+    padding: 0px;
+  }
+  .badge img {
+    max-width: 50px;
+    max-height: 50px;
   }
 }
 </style>

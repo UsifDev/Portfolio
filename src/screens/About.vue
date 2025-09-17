@@ -60,9 +60,8 @@ export default {
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
   justify-content: center;
-  gap: 2rem;
-  padding-top: 90px;
-  padding-bottom: 70px;
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 
 .about-img img {
@@ -102,7 +101,7 @@ export default {
 .about-gri {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, auto));
-  grid-template-rows: repeat(auto-fit, minmax(70px, auto));
+  grid-template-rows: repeat(auto, minmax(70px, auto));
   align-items: center;
   justify-content: center;
   justify-items: center;
@@ -115,7 +114,7 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 2rem 0 2rem 0;
+    padding: 2rem 0;
     width: 100vw;
     box-sizing: border-box;
   }
@@ -124,7 +123,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 1rem;
+    margin: 2rem 0;
   }
   .about-img img {
     min-width: 80px;

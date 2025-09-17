@@ -89,7 +89,7 @@ export default {
   .home {
     flex-direction: column;
     align-items: flex-start;
-    padding-top: 6rem;
+    padding-top: 10rem;
     padding-bottom: 3rem;
     min-height: 70vh;
   }

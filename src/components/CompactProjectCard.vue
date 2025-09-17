@@ -134,7 +134,7 @@ export default {
 }
 
 .card-content {
-  padding: 1.2rem;
+  padding: 1.5rem;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -151,7 +151,6 @@ export default {
   margin-bottom: 0.8rem;
   text-align: left;
   color: var(--color-heading);
-  font-weight: 600;
 }
 
 .card-description {
@@ -220,7 +219,7 @@ export default {
   opacity: 1;
 }
 
-@media screen and (orientation: landscape), (min-width: 900px) {
+@media screen and (orientation: landscape) and (min-width: 900px) {
   .card-title,
   .card-description {
     font-size: 1.1rem;
