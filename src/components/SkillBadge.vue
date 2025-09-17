@@ -168,7 +168,7 @@ export default {
   font-weight: 600;
   cursor: pointer;
   border-top: 1px solid var(--color-border);
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1.6;
 }
 
@@ -182,14 +182,6 @@ export default {
 
 .projects-list::-webkit-scrollbar-track {
   background: var(--color-background-mute);
-}
-@media screen and (orientation: landscape), (min-width: 900px) {
-  .project-item,
-  .primary-project,
-  .skill-badge {
-    font-size: 1.1rem;
-    line-height: 1.7;
-  }
 }
 
 .projects-list::-webkit-scrollbar-thumb {
@@ -212,6 +204,7 @@ export default {
   background-color: var(--color-background-mute);
   color: var(--color-text);
   border: none;
+  font-size: 1.1rem;
   line-height: 1.6;
   transition: all 0.2s ease;
   cursor: pointer;

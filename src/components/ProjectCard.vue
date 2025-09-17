@@ -104,7 +104,7 @@ export default {
 <style scoped>
 .project-card {
   display: flex;
-  max-width: 1200px;
+  max-width: 1600px;
   width: 100%;
   margin: 2rem auto;
   border-radius: 12px;
@@ -178,7 +178,7 @@ export default {
 }
 
 .lessons-list {
-  padding-left: 1.2rem;
+  padding-top: 1.2rem;
 }
 
 .lessons-list li {
@@ -187,8 +187,8 @@ export default {
 
 .CTA {
   margin-top: auto; /* Pushes to bottom */
-  padding-top: 2vh;
-  padding-bottom: 2vh;
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
   text-align: center;
 }
 

@@ -87,7 +87,7 @@ export default {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 200px;
+  width: 2.3em;
   height: 3px;
   background: var(--accent-color);
 }

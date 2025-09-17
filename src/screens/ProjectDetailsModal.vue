@@ -5,8 +5,8 @@
 
       <h2 class="project-title" :class="{ highlighted: project.highlighted }">
         {{ project.title }}
-        <span v-if="showHighlightBadge" class="highlight-badge">Featured</span>
       </h2>
+      <p v-if="showHighlightBadge" class="highlight-badge">Featured</p>
 
       <div class="accent-separator"></div>
 
@@ -153,8 +153,9 @@ export default {
 
 .close-button {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 2rem;
+  right: 2rem;
+  font-size: 3rem;
   background: none;
   border: none;
   cursor: pointer;
@@ -174,8 +175,8 @@ export default {
 
 .highlight-badge {
   position: absolute;
-  top: 0.1rem;
-  right: 1rem;
+  top: 0;
+  right: 3rem;
   background: var(--accent-color);
   color: white;
   padding: 0.2rem 0.8rem;
@@ -250,7 +251,7 @@ h3 {
 }
 
 ul {
-  padding-left: 1.2rem;
+  padding-top: 1.2rem;
 }
 
 li {
@@ -261,19 +262,10 @@ li {
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem;
-  margin-top: 1rem;
+  padding-top: 1rem;
 }
 
-@media screen and (orientation: landscape), (min-width: 900px) {
-  .project-title,
-  h3,
-  li {
-    font-size: 1.1rem;
-    line-height: 1.7;
-  }
-}
-
-@media screen and (orientation: landscape) {
+@media screen and (orientation: landscape) and (max-width: 900px) {
   .modal-overlay {
     align-items: flex-start;
     padding-top: 2vh;
@@ -294,13 +286,9 @@ li {
   }
 }
 
-@media (max-width: 600px) {
+@media screen and (orientation: portrait) {
   .project-modal {
     padding: 1.5rem;
-  }
-
-  .project-title {
-    font-size: 1.5rem;
   }
 
   .media-container {

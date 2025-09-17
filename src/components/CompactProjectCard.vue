@@ -6,7 +6,7 @@
     @click="openProjectModal"
   >
     <div class="card-content" :class="{ hovered: isHovered }">
-      <h3 class="card-title">{{ project.title }}</h3>
+      <h5 class="card-title">{{ project.title }}</h5>
       <p class="card-description">
         {{ truncateDescription(project.description) }}
       </p>
@@ -150,6 +150,7 @@ export default {
 .card-title {
   margin-bottom: 0.8rem;
   text-align: left;
+  line-height: 2rem;
   color: var(--color-heading);
 }
 
@@ -217,13 +218,5 @@ export default {
 .slide-up-leave-from {
   transform: translateY(0);
   opacity: 1;
-}
-
-@media screen and (orientation: landscape) and (min-width: 900px) {
-  .card-title,
-  .card-description {
-    font-size: 1.1rem;
-    line-height: 1.7;
-  }
 }
 </style>

@@ -40,27 +40,18 @@ export default {
 .section-title {
   text-align: center;
   margin-bottom: 2.5rem;
-  font-size: 2rem;
-  line-height: 1.2;
   color: white;
   position: relative;
   padding-bottom: 1rem;
 }
 
-@media screen and (orientation: landscape), (min-width: 900px) {
-  .section-title {
-    font-size: 1.1rem;
-    line-height: 1.7;
-  }
-}
-
 .section-title::after {
   content: "";
   position: absolute;
-  bottom: 0;
   left: 50%;
+  bottom: -15px;
   transform: translateX(-50%);
-  width: 80px;
+  width: 2.6em;
   height: 3px;
   background: var(--accent-color);
 }
@@ -68,6 +59,6 @@ export default {
 .projects-container {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 }
 </style>

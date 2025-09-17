@@ -98,12 +98,12 @@ export default {
 
 .close-button {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 10%;
+  right: 10%;
   background: none;
   border: none;
   color: white;
-  font-size: 2rem;
+  font-size: 3rem;
   cursor: pointer;
   z-index: 1002;
 }
@@ -162,7 +162,6 @@ export default {
 .media-caption {
   color: white;
   margin-top: 1rem;
-  font-size: 1.1rem;
   max-width: 80%;
   margin-left: auto;
   margin-right: auto;
@@ -170,13 +169,24 @@ export default {
 
 .image-counter {
   position: absolute;
-  bottom: 20px;
+  bottom: 3%;
   left: 50%;
   transform: translateX(-50%);
   color: white;
   background: rgba(0, 0, 0, 0.5);
   padding: 0.5rem 1rem;
   border-radius: 20px;
-  font-size: 1rem;
+}
+
+@media screen and (orientation: landscape) and (max-width: 900px) {
+  .image-counter {
+    bottom: 0;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  .image-counter {
+    bottom: 10%;
+  }
 }
 </style>
