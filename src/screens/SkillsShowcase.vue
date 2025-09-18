@@ -87,9 +87,9 @@ export default {
   background: var(--accent-color);
 }
 
-@media (max-width: 600px) {
+@media (orientation: portrait) and (max-width: 900px) {
   .skills-grid {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   }
 }
 </style>

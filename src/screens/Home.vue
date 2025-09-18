@@ -78,14 +78,7 @@ export default {
   font-size: 2.3em;
 }
 
-@media (min-aspect-ratio: 16/10) {
-  .back-video {
-    width: 110%;
-    height: auto;
-  }
-}
-
-@media (max-width: 600px) and (orientation: portrait) {
+@media (orientation: portrait) and (max-width: 900px) {
   .home {
     flex-direction: column;
     align-items: flex-start;

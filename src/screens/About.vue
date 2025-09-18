@@ -108,7 +108,7 @@ export default {
   gap: 1rem;
 }
 
-@media (max-width: 600px) and (orientation: portrait) {
+@media (orientation: portrait) and (max-width: 900px) {
   .about {
     display: flex;
     flex-direction: column;
@@ -143,6 +143,10 @@ export default {
   .about-text h2 {
     margin-top: 0.5rem;
     text-align: center;
+  }
+
+  .about-gri {
+    margin-top: 2rem;
   }
 }
 </style>

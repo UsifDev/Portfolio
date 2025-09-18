@@ -73,8 +73,8 @@ header.sticky {
 }
 
 .btn {
-  font-size: 1em;
   margin-right: 50px;
+  font-size: 1.3rem;
 }
 
 .navbar {
@@ -117,7 +117,7 @@ header.sticky {
   height: auto;
 }
 
-@media screen and (orientation: landscape) and (max-width: 900px) {
+@media (orientation: landscape) and (max-width: 1200px) {
   header {
     padding: 8px 4%;
     min-height: 48px;
@@ -142,7 +142,7 @@ header.sticky {
   }
 }
 
-@media (max-width: 600px) and (orientation: portrait) {
+@media (orientation: portrait) and (max-width: 900px) {
   #menu-icon {
     display: none;
   }

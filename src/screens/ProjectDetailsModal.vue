@@ -1,13 +1,13 @@
 <template>
   <div class="modal-overlay" @click.self="closeModal">
     <div class="project-modal">
-      <button class="close-button" @click="closeModal">×</button>
-
-      <h2 class="project-title" :class="{ highlighted: project.highlighted }">
-        {{ project.title }}
-      </h2>
-      <p v-if="showHighlightBadge" class="highlight-badge">Featured</p>
-
+      <div class="modal-header">
+        <h3 class="project-title" :class="{ highlighted: project.highlighted }">
+          {{ project.title }}
+        </h3>
+        <span v-if="showHighlightBadge" class="highlight-badge">Featured</span>
+        <button class="close-button" @click="closeModal">×</button>
+      </div>
       <div class="accent-separator"></div>
 
       <div class="media-section" v-if="project.media && project.media.length">
@@ -24,7 +24,7 @@
       </div>
 
       <div class="description-section">
-        <h3>Description</h3>
+        <h4>Description</h4>
         <p>{{ project.description }}</p>
       </div>
 
@@ -32,7 +32,7 @@
         class="lessons-section"
         v-if="project.lessons && project.lessons.length"
       >
-        <h3>Lessons Learned</h3>
+        <h4>Lessons Learned</h4>
         <ul>
           <li
             v-for="(lesson, index) in project.lessons"
@@ -44,14 +44,14 @@
       </div>
 
       <div class="challenges-section" v-if="project.challenge">
-        <h3>Challenges Overcome</h3>
+        <h4>Challenges Overcome</h4>
         <p>{{ project.challenge }}</p>
       </div>
 
       <div class="accent-separator"></div>
 
       <div class="skills-section">
-        <h3>Skills Applied</h3>
+        <h4>Skills Applied</h4>
         <div class="skills-grid">
           <SkillBadgeComp
             class="badge"
@@ -151,19 +151,50 @@ export default {
   margin-bottom: 50px;
 }
 
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.project-title {
+  flex: 1 1 auto;
+  margin-bottom: 0;
+  color: var(--color-heading);
+  position: relative;
+  padding-right: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+.project-title.highlighted {
+  color: var(--accent-color);
+}
+
+.highlight-badge {
+  background: var(--accent-color);
+  color: white;
+  padding: 0.2rem 0.8rem;
+  border-radius: 1rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+}
+
 .close-button {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  font-size: 3rem;
+  font-size: 2.2rem;
   background: none;
   border: none;
   cursor: pointer;
   color: var(--color-text);
+  margin-left: 0.5rem;
+  margin-right: 0;
+  padding: 0 0.5rem;
 }
 
 .project-title {
-  margin-bottom: 1rem;
   color: var(--color-heading);
   position: relative;
   padding-right: 2rem;
@@ -171,17 +202,6 @@ export default {
 
 .project-title.highlighted {
   color: var(--accent-color);
-}
-
-.highlight-badge {
-  position: absolute;
-  top: 0;
-  right: 3rem;
-  background: var(--accent-color);
-  color: white;
-  padding: 0.2rem 0.8rem;
-  border-radius: 1rem;
-  font-weight: bold;
 }
 
 .accent-separator {
@@ -245,13 +265,9 @@ export default {
   margin: 1.5rem 0;
 }
 
-h3 {
+h4 {
   margin-bottom: 0.8rem;
   color: var(--color-heading);
-}
-
-ul {
-  padding-top: 1.2rem;
 }
 
 li {
@@ -265,7 +281,7 @@ li {
   padding-top: 1rem;
 }
 
-@media screen and (orientation: landscape) and (max-width: 900px) {
+@media (orientation: landscape) and (max-width: 1200px) {
   .modal-overlay {
     align-items: flex-start;
     padding-top: 2vh;
@@ -280,17 +296,28 @@ li {
     padding: 2rem 1.5rem;
     box-sizing: border-box;
   }
+  .modal-header {
+    gap: 1rem;
+  }
   .project-title {
-    font-size: 1.5rem;
     padding-top: 0.5rem;
   }
 }
 
-@media screen and (orientation: portrait) {
-  .project-modal {
-    padding: 1.5rem;
+@media (orientation: portrait) and (max-width: 900px) {
+  .modal-header {
+    gap: 0.5rem;
   }
-
+  .project-title {
+    padding-top: 0.2rem;
+  }
+  .highlight-badge {
+    margin-left: 0.3rem;
+  }
+  .close-button {
+    margin-left: 0.3rem;
+    padding: 0 0.3rem;
+  }
   .media-container {
     grid-template-columns: 1fr;
   }

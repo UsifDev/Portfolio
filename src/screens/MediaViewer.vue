@@ -178,15 +178,15 @@ export default {
   border-radius: 20px;
 }
 
-@media screen and (orientation: landscape) and (max-width: 900px) {
+@media (orientation: landscape) and (max-width: 1200px) {
   .image-counter {
-    bottom: 0;
+    bottom: 1.5%;
   }
 }
 
-@media screen and (orientation: portrait) {
+@media (orientation: portrait) and (max-width: 900px) {
   .image-counter {
-    bottom: 10%;
+    bottom: 0.7%;
   }
 }
 </style>

@@ -251,6 +251,7 @@ section {
   position: fixed;
   bottom: 2.1rem;
   right: 2.1rem;
+  z-index: 10001;
 }
 
 .top i {
@@ -261,69 +262,7 @@ section {
   border-radius: 0.5rem;
 }
 
-@media (max-width: 1325px) {
-  header {
-    padding: 16px 3%;
-  }
-  header.sticky {
-    padding: 8px 3%;
-  }
-  section {
-    padding: 0 0 60px 0;
-    width: 100vw;
-    box-sizing: border-box;
-  }
-}
-
-@media (max-width: 600px) {
-  section {
-    padding: 0 0 60px 0;
-    width: 100vw;
-    box-sizing: border-box;
-  }
-}
-
-@media (max-width: 970px) {
-  :root {
-    --h1-font: 4.2rem;
-    --h2-font: 2.9rem;
-    --p-font: 1rem;
-  }
-  section {
-    padding: 70px 3% 60px;
-  }
-}
-
-@media (max-width: 830px) {
-  #menu-icon {
-    display: block;
-  }
-  .navbar {
-    position: absolute;
-    top: -600px;
-    right: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    background: #12141c;
-    text-align: left;
-    transition: all 0.4s ease;
-  }
-  .navbar a {
-    display: block;
-    padding: 1rem;
-    margin: 1rem;
-  }
-  .navbar.active {
-    top: 100%;
-  }
-  :root {
-    --h1-font: 3.7rem;
-    --h2-font: 2.7rem;
-  }
-}
-
-@media screen and (orientation: landscape) and (max-width: 900px) {
+@media (orientation: landscape) and (max-width: 1200px) {
   html {
     font-size: 9px;
   }
@@ -332,13 +271,12 @@ section {
   }
 }
 
-@media (max-width: 600px) and (orientation: portrait) {
+@media (orientation: portrait) and (max-width: 900px) {
   html {
     font-size: 12px;
   }
   .btn {
     padding: 10px 20px;
-    font-size: 0.9em;
   }
 }
 </style>

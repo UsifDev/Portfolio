@@ -152,7 +152,6 @@ export default {
   flex: 1;
   padding: 3% 2rem;
   display: flex;
-  gap: 1vh;
   flex-direction: column;
 }
 
@@ -162,11 +161,13 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 2.5vh;
+  max-height: fit-content;
 }
 
 .project-title {
   text-align: center;
   color: var(--accent-color);
+  margin-bottom: 1rem;
 }
 
 .project-description {
@@ -178,7 +179,8 @@ export default {
 }
 
 .lessons-list {
-  padding-top: 1.2rem;
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
 }
 
 .lessons-list li {
@@ -188,20 +190,21 @@ export default {
 .CTA {
   margin-top: auto; /* Pushes to bottom */
   padding-top: 0.5vw;
-  padding-bottom: 0.5vw;
   text-align: center;
 }
 
 .accent-separator {
   height: 3px;
   background: var(--accent-color);
-  margin: 0.3rem 17rem;
+  margin: 0.5rem 17rem;
   border-radius: 5px;
+  margin-bottom: 1.7rem;
 }
 
-@media (max-width: 1200px) {
+@media (orientation: portrait) and (max-width: 1200px) {
   .project-card {
     flex-direction: column;
+    width: 90vw;
   }
 
   .skills-section {
@@ -210,11 +213,14 @@ export default {
     border-left: none;
     border-top: 1px solid var(--color-border);
   }
-}
 
-@media screen and (orientation: landscape) and (min-width: 900px) {
-  .skills-section {
-    gap: 1vh;
+  .accent-separator {
+    margin: 2rem 1rem;
+    margin-top: 1rem;
+  }
+
+  .CTA {
+    padding-bottom: 1rem;
   }
 }
 </style>

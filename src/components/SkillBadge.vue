@@ -8,7 +8,7 @@
       @mouseleave="hideTooltip()"
       @click="openProjectModal(primaryProject)"
     >
-      {{ name }}
+      <p>{{ name }}</p>
     </button>
 
     <div
@@ -198,14 +198,12 @@ export default {
 .skill-badge {
   display: inline-flex;
   align-items: center;
-  padding: 0.4rem 0.8rem;
+  padding: 0.8rem 1.6rem;
   margin: 0.2rem;
   border-radius: 1rem;
   background-color: var(--color-background-mute);
   color: var(--color-text);
   border: none;
-  font-size: 1.1rem;
-  line-height: 1.6;
   transition: all 0.2s ease;
   cursor: pointer;
 }
@@ -247,6 +245,12 @@ export default {
   }
   100% {
     transform: rotate(30deg) translate(30%, 30%);
+  }
+}
+
+@media (orienataion: portrait) and (max-width: 900px) {
+  .skill-badge {
+    padding: 0.4rem 0.8rem;
   }
 }
 </style>

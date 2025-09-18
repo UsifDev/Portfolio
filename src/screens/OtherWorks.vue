@@ -105,7 +105,7 @@ export default {
   border-radius: 8px;
 }
 
-@media (max-width: 768px) {
+@media (orientation: portrait) and (max-width: 900px) {
   .works-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }

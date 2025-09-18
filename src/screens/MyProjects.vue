@@ -61,4 +61,10 @@ export default {
   flex-direction: column;
   gap: 1rem;
 }
+
+@media (orientation: portrait) and (max-width: 900px) {
+  .projects-container {
+    gap: 0;
+  }
+}
 </style>

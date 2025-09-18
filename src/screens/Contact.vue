@@ -123,6 +123,7 @@ export default {
   gap: var(--gap, 24px);
   align-items: stretch;
   min-height: 180px;
+  justify-content: center;
 }
 
 .badges-frame {
@@ -148,12 +149,8 @@ export default {
   padding: 16px 32px;
   border-radius: 0 30px 30px 0px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  min-height: 180px;
   align-items: center;
-  justify-items: center;
 }
-
-/* Responsive layouts */
 .badges-count-1 {
   grid-template-columns: 1fr;
   min-width: 180px;
@@ -164,10 +161,12 @@ export default {
 .badges-count-3 {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
+  align-items: center;
 }
 .badges-count-3 .badge:first-child {
   grid-column: 1 / span 2;
   justify-self: center;
+  align-self: center;
 }
 .badges-count-4 {
   grid-template-columns: repeat(2, 1fr);
@@ -317,12 +316,12 @@ export default {
   margin: 0 auto;
 }
 
-@media (max-width: 600px) and (orientation: portrait) {
+@media (orientation: portrait) and (max-width: 900px) {
   .contact {
     display: flex;
     flex-direction: column;
     gap: 5rem;
-    padding: 5rem 0.5rem 50px 0.5rem;
+    padding: 1.8rem 0.5rem 50px 0.5rem;
     align-items: center;
   }
   .certifcates-container {
@@ -348,14 +347,14 @@ export default {
     align-items: flex-start;
     gap: 8px;
     padding: 8px 0 8px 8px;
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 2px;
+    padding: 8px;
   }
   .badge {
     width: 70px;
     height: 70px;
-    margin-bottom: 8px;
-  }
-  .contact-text {
-    padding-top: 32px;
+    margin: 8px;
   }
   .certifcates-container {
     width: 100%;
@@ -364,15 +363,6 @@ export default {
   }
   .badges-frame {
     padding: 8px 8px;
-  }
-  .badges-container {
-    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-    gap: 8px;
-    padding: 8px;
-  }
-  .badge {
-    width: 70px;
-    height: 70px;
   }
   .badge img {
     max-width: 60px;
@@ -380,11 +370,32 @@ export default {
   }
 }
 
-@media screen and (orientation: landscape) and (max-width: 900px) {
+@media (orientation: landscape) and (max-width: 1200px) {
   .contact {
+    display: flex;
     flex-direction: row;
-    gap: 1.5rem;
-    padding: 0.5rem;
+    padding-top: 0;
+    padding-bottom: 3rem;
+    gap: 10rem;
+  }
+  .contact-text {
+    width: 100%;
+    left: 0;
+  }
+  .badges-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 8px 0 8px 8px;
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 2px;
+    padding: 8px;
+  }
+  .badge {
+    width: 70px;
+    height: 70px;
+    margin: 8px;
   }
   .certifcates-container {
     width: 100%;
@@ -394,23 +405,9 @@ export default {
   .badges-frame {
     padding: 8px 8px;
   }
-  .badges-frame [data-share-badge-id] {
-    transform: scale(0.7);
-    transform-origin: top left;
-    display: inline-block;
-  }
-  .badges-container {
-    grid-template-columns: repeat(auto-fit, minmax(48px, 1fr));
-    gap: 4px;
-    padding: 8px;
-  }
-  .badge {
-    width: 40px;
-    height: 40px;
-  }
   .badge img {
-    max-width: 32px;
-    max-height: 32px;
+    max-width: 60px;
+    max-height: 60px;
   }
 }
 </style>
