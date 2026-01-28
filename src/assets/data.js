@@ -290,8 +290,8 @@ export const homeData = {
 export const aboutData = {
   image: new img("/Portfolio/dev icon.png", "Developer Icon"),
   description: [
-    "I am a Software Engineering graduate, strongly interested in <strong>video game development</strong>. Being a gamer and a perfectionist, I have gained deep insight into the industry over time, that enables me to swiftly <strong>identify key interactive experience elements</strong> and plan improvements for <strong>user experience</strong> of applications and video games.",
-    "I like learning new things, optimizing stuff and developing software to solve various types of problems. Most of my skills are transferable and I am <strong>open to</strong> applying them in <strong>other software fields</strong> too.",
+    "I am a Software Engineer, interested in <strong>video game development</strong> and UX. Over time, I have gained insight on <strong>user experience design</strong>, enabling me to swiftly <strong>identify key interactive experience elements</strong> and plan ahead for <strong>UX</strong> when building applications and video games.",
+    "I like learning new things, optimizing stuff and developing software to solve various types of problems. My skills are transferable and I am <strong>open to</strong> applying them in <strong>other software fields</strong> too.",
   ],
 };
 
